@@ -1,4 +1,4 @@
-# 🌍 OutsourceX — Echipe Tech la Cheie & Staff Augmentation - Baba Cristian-Teodor 634AB
+# 🌍 OutsourceX — Echipe Tech la Cheie & Staff Augmentation
 
 OutsourceX este un site web modern dedicat firmelor care caută echipe de dezvoltare software complete sau specialiști individuali pentru proiecte tech.  
 Scopul platformei este să conecteze companiile cu echipe de experți în domenii precum:
@@ -16,15 +16,16 @@ Proiectul face parte dintr-o lucrare universitară și urmărește:
 - Crearea unei **platforme de prezentare** pentru o firmă de outsourcing IT  
 - Implementarea unui design **modern, responsive și orientat spre conversie**  
 - Adăugarea unei **baze de date** care va stoca informații despre echipă, servicii și clienți  
-- Conectarea ulterioară la un backend pentru gestionarea datelor
+- Conectarea ulterioară la un backend (PHP + MySQL în LAMP) pentru gestionarea datelor
 
-Frontend-ul este construit în HTML, CSS și JavaScript clasic, fără framework-uri externe (pentru control total asupra designului).  
+Frontend-ul este construit în **HTML**, **CSS** și **JavaScript**, iar infrastructura backend folosește un mediu **Docker LAMP** (Linux, Apache, MySQL, PHP).  
 🎨 Tema: tonuri închise, accente albastre, carduri flip 3D pentru prezentarea echipei și secțiuni animate pentru servicii.
 
 ---
 
 ## 🚀 Structura proiectului
 
+```bash
 📦 proiect/
  ┗ 📁 lamp-studenti/
      ┣ 📜 docker-compose.yml
@@ -34,47 +35,34 @@ Frontend-ul este construit în HTML, CSS și JavaScript clasic, fără framework
          ┣ 📜 echipa.html
          ┣ 📜 proiecte.php
          ┗ 📜 style.css
----
+📘 Explicație rapidă:
 
-## 💻 Comenzi utile Git
+docker-compose.yml — definește serviciile LAMP (Apache, MySQL, PHP)
 
-### 🔄 Flux uzual de lucru
-```bash
-# 1️⃣ Verifici statusul modificărilor
-git status
+index.php — pagina principală cu logică PHP
 
-# 2️⃣ Adaugi fișierele noi sau modificate
-git add .
+index.html — landing page-ul frontend
 
-# 3️⃣ Faci un commit cu un mesaj clar
-git commit -m "Adăugat secțiunea de echipă și stilurile flip-card"
+echipa.html — secțiunea dedicată echipei OutsourceX
 
-# 4️⃣ Trimiți modificările pe GitHub
-git push
-🌿 Lucrul pe un branch nou
-bash
-Copy code
-# Creezi un branch nou
-git checkout -b Proiect2
+proiecte.php — listă de proiecte și module dinamice
 
-# Faci push pentru prima dată și setezi upstream-ul
-git push -u origin Proiect2
-🧭 Alte comenzi utile
-bash
-Copy code
-git pull             # aduce ultimele modificări de pe remote
-git branch           # listează toate branch-urile
-git merge nume-branch # combină un branch în cel curent
+style.css — fișierul de stiluri pentru tot site-ul
+
 ✨ Autor
 Baba Cristian-Teodor (Teddy)
 📚 Universitatea Politehnica din București – Facultatea de Robotică
 💡 Proiect: „OutsourceX — Platformă de Outsourcing și Staff Augmentation”
 
 🧩 Obiective viitoare
-Integrare backend (FastAPI / Node.js)
+Integrare completă backend (PHP + MySQL)
 
 Sistem de autentificare pentru administrare echipe și clienți
 
 Dashboard intern pentru managementul proiectelor
 
 API REST pentru parteneri și clienți corporate
+
+Migrare opțională spre FastAPI pentru performanță crescută
+
+🔹 „Build smarter, outsource better.” — motto-ul OutsourceX
