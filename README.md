@@ -25,18 +25,15 @@ Frontend-ul este construit în HTML, CSS și JavaScript clasic, fără framework
 
 ## 🚀 Structura proiectului
 
-📦 site/
-┣ 📜 index.html
-┣ 📜 echipa.html
-┣ 📜 stil.css
-┣ 📜 script.js
-┗ 📁 assets/
-┣ 📁 img/
-┗ 📁 icons/
-
-yaml
-Copy code
-
+📦 proiect/
+ ┗ 📁 lamp-studenti/
+     ┣ 📜 docker-compose.yml
+     ┗ 📁 studenti/
+         ┣ 📜 index.html
+         ┣ 📜 index.php
+         ┣ 📜 echipa.html
+         ┣ 📜 proiecte.php
+         ┗ 📜 style.css
 ---
 
 ## 💻 Comenzi utile Git
