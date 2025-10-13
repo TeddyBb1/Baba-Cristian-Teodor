@@ -35,6 +35,8 @@ Frontend-ul este construit în **HTML**, **CSS** și **JavaScript**, iar infrast
          ┣ 📜 echipa.html
          ┣ 📜 proiecte.php
          ┗ 📜 style.css
+```
+
 📘 Explicație rapidă:
 
 docker-compose.yml — definește serviciile LAMP (Apache, MySQL, PHP)
@@ -50,19 +52,8 @@ proiecte.php — listă de proiecte și module dinamice
 style.css — fișierul de stiluri pentru tot site-ul
 
 ✨ Autor
-Baba Cristian-Teodor (Teddy)
+Baba Cristian-Teodor 
 📚 Universitatea Politehnica din București – Facultatea de Robotică
 💡 Proiect: „OutsourceX — Platformă de Outsourcing și Staff Augmentation”
-
-🧩 Obiective viitoare
-Integrare completă backend (PHP + MySQL)
-
-Sistem de autentificare pentru administrare echipe și clienți
-
-Dashboard intern pentru managementul proiectelor
-
-API REST pentru parteneri și clienți corporate
-
-Migrare opțională spre FastAPI pentru performanță crescută
 
 🔹 „Build smarter, outsource better.” — motto-ul OutsourceX
