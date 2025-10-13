@@ -1,4 +1,4 @@
-# 🌍 OutsourceX — Echipe Tech la Cheie & Staff Augmentation - Baba Cristian-Teodor 634AB
+# 🌍 DevAllies — Echipe Tech la Cheie & Staff Augmentation - Baba Cristian-Teodor 634AB
 
 OutsourceX este un site web modern dedicat firmelor care caută echipe de dezvoltare software complete sau specialiști individuali pentru proiecte tech.  
 Scopul platformei este să conecteze companiile cu echipe de experți în domenii precum:
