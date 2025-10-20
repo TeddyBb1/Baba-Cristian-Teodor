@@ -1,61 +1,297 @@
 <!DOCTYPE html>
-<html>
+<html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <title>Firma de Outsourcing</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OutsourceX — Construim echipe tech rapide</title>
+  <meta name="description" content="Outsourcing & staff augmentation. Echipe senior pentru web, mobile, AI/ML, embedded, DevOps." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Header -->
+  <header class="site-header">
+  <div class="container header-inner">
+        <a class="logo" href="#acasa">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-text">OutsourceX</span>
+        </a>
+        <nav class="nav" aria-label="Meniu principal">
+        <a href="#acasa">Acasă</a>
+        <a href="#servicii">Servicii</a>
+        <a href="echipa.html">Echipă</a>
+        </nav>
+        <a class="btn btn-accent" href="#contact">Contact</a>
+    </div>
+    </header>
 
-    <h1>Firma de Outsourcing</h1>
+  <main id="acasa">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1 class="hero-title">ARTA DE A CONSTRUI ECHIPE TEHNICE</h1>
+          <p class="hero-sub">
+            Livrăm performanță, nu promisiuni. Echipele noastre multidisciplinare lucrează agil, predictibil și complet integrat cu nevoile businessului tău.
+          </p>
+          <div class="hero-cta">
+            <a class="btn" href="#contact">Sună-ne azi</a>
+          </div>
+        </div>
 
-    <p>
-        <a href="#despre">Despre noi</a> |
-        <a href="#servicii">Servicii</a> |
-        <a href="echipa.html">Echipă</a> |
-        <a href="proiecte.html">Proiecte</a> |
-        <a href="#contact">Contact</a>
-    </p>
+        <figure class="hero-visual" aria-label="Imagine erou">
+          <img src="assets/hero.png" alt="Persoană lucrând la laptop pe fundal portocaliu" />
+        </figure>
+      </div>
+    </section>
 
-    <hr>
+    <!-- Infinite Logo Carousel (parteneri) -->
+    <section class="logos" aria-labelledby="logos-title">
+      <div class="container">
+        <h2 id="logos-title">Parteneri & clienți</h2>
+        <p class="help-sub">Top companii la nivel global cu care ne aliniem standardele.</p>
+      </div>
+      <div class="logo-track-wrap">
+        <div class="logo-track">
+          <!-- 20 companii (text badge / logo placeholder). Poți înlocui cu SVG/imagini. -->
+          <span>Apple</span><span>Microsoft</span><span>Saudi&nbsp;Aramco</span><span>Alphabet</span><span>Amazon</span>
+          <span>NVIDIA</span><span>Meta</span><span>Berkshire&nbsp;Hathaway</span><span>TSMC</span><span>Tesla</span>
+          <span>ExxonMobil</span><span>Visa</span><span>JPMorgan&nbsp;Chase</span><span>Johnson&nbsp;&nbsp;Johnson</span><span>Walmart</span>
+          <span>Samsung</span><span>Nestlé</span><span>LVMH</span><span>Procter&nbsp;&nbsp;Gamble</span><span>Toyota</span>
 
-    <h2 id="despre">Despre noi</h2>
-    <p>Suntem o firmă de outsourcing care oferă servicii IT, design web și suport tehnic. Lucrăm cu clienți din întreaga lume, oferind soluții profesionale și eficiente.</p>
-    <p>Scopul nostru este să ajutăm companiile să se concentreze pe activitățile principale, în timp ce noi ne ocupăm de sarcinile tehnice.</p>
+          <!-- dublate pentru efect „infinit” -->
+          <span>Apple</span><span>Microsoft</span><span>Saudi&nbsp;Aramco</span><span>Alphabet</span><span>Amazon</span>
+          <span>NVIDIA</span><span>Meta</span><span>Berkshire&nbsp;Hathaway</span><span>TSMC</span><span>Tesla</span>
+          <span>ExxonMobil</span><span>Visa</span><span>JPMorgan&nbsp;Chase</span><span>Johnson&nbsp;&nbsp;Johnson</span><span>Walmart</span>
+          <span>Samsung</span><span>Nestlé</span><span>LVMH</span><span>Procter&nbsp;&nbsp;Gamble</span><span>Toyota</span>
+        </div>
+      </div>
+    </section>
 
-    <p><a href="#servicii">Vezi serviciile noastre</a></p>
+    <!-- Cum te putem ajuta (carusel) -->
+    <section class="help" id="servicii" aria-labelledby="help-title">
+      <div class="container">
+        <h2 id="help-title">CUM TE PUTEM AJUTA?</h2>
+        <p class="help-sub">Mai multe modele de colaborare pe care le poți parcurge în carusel.</p>
 
-    <hr>
+        <div class="carousel" data-carousel>
+          <button class="car-btn prev" aria-label="Înapoi" data-prev>&larr;</button>
+          <div class="car-viewport" data-viewport>
+            <div class="car-track" data-track>
+              <!-- Slide 1 -->
+              <article class="serv-card">
+                <h3>Staff Augmentation</h3>
+                <ul>
+                  <li>Dezvoltatori integrați în echipa ta</li>
+                  <li>Screening tehnic & cultural</li>
+                  <li>Ramp-up < 2 săptămâni</li>
+                </ul>
+              </article>
+              <!-- Slide 2 -->
+              <article class="serv-card">
+                <h3>Proiecte la cheie</h3>
+                <ul>
+                  <li>Discovery, arhitectură, implementare</li>
+                  <li>Milestones + demo bilunar</li>
+                  <li>SLA & garanție post-launch</li>
+                </ul>
+              </article>
+              <!-- Slide 3 -->
+              <article class="serv-card">
+                <h3>Consultanță & Audit</h3>
+                <ul>
+                  <li>Cloud, Kubernetes, SRE</li>
+                  <li>Security hardening (OWASP)</li>
+                  <li>Optimizare costuri</li>
+                </ul>
+              </article>
+              <!-- Slide 4 -->
+              <article class="serv-card">
+                <h3>AI & Data</h3>
+                <ul>
+                  <li>ML engineering & MLOps</li>
+                  <li>NLP / CV, RAG</li>
+                  <li>Data pipelines</li>
+                </ul>
+              </article>
+              <!-- Slide 5 -->
+              <article class="serv-card">
+                <h3>UI/UX & Product</h3>
+                <ul>
+                  <li>Research, prototyping, design system</li>
+                  <li>UX writing</li>
+                  <li>Testare cu utilizatori</li>
+                </ul>
+              </article>
+              <!-- Slide 6 -->
+              <article class="serv-card">
+                <h3>Embedded & IoT</h3>
+                <ul>
+                  <li>Firmware & drivere</li>
+                  <li>Edge AI</li>
+                  <li>Integrare senzori-cloud</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+          <button class="car-btn next" aria-label="Înainte" data-next>&rarr;</button>
+        </div>
+      </div>
+    </section>
 
-    <h2 id="servicii">Serviciile noastre</h2>
-    <ul>
-        <li>Dezvoltare software personalizată</li>
-        <li>Design grafic și web</li>
-        <li>Administrare servere și baze de date</li>
-        <li>Consultanță și suport tehnic</li>
-    </ul>
+    <!-- Proiecte trecute -->
+    <section class="projects" id="proiecte" aria-labelledby="proj-title">
+      <div class="container">
+        <h2 id="proj-title">Proiecte trecute</h2>
+        <p class="help-sub">Câteva livrabile reprezentative din ultimii ani.</p>
 
-    <p><a href="#contact">Contactează-ne pentru o ofertă</a></p>
+        <div class="proj-grid">
+          <article class="proj card">
+            <h3>Fintech KYC</h3>
+            <p>Reducere timp verificare cu 38% prin CV + OCR.</p>
+            <small>Python · FastAPI · React · Kubernetes</small>
+          </article>
+          <article class="proj card">
+            <h3>e-Commerce Headless</h3>
+            <p>+21% conversii după replatforming & perf tuning.</p>
+            <small>Next.js · Node · Redis</small>
+          </article>
+          <article class="proj card">
+            <h3>IoT Predictive</h3>
+            <p>Downtime redus cu 30% folosind modele pe senzori.</p>
+            <small>Go · Timeseries DB · Edge</small>
+          </article>
+          <article class="proj card">
+            <h3>Banking Mobile</h3>
+            <p>Refactor arhitectură și CI/CD complet.</p>
+            <small>Kotlin · Swift · Firebase</small>
+          </article>
+          <article class="proj card">
+            <h3>Observability</h3>
+            <p>Stack centralizat de loguri, metrici, trace-uri.</p>
+            <small>Prometheus · Tempo · Grafana</small>
+          </article>
+          <article class="proj card">
+            <h3>Security Hardening</h3>
+            <p>SDLC securizat & pipeline cu scanări automate.</p>
+            <small>OWASP · Trivy · Vault</small>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <hr>
+    <!-- Review-uri clienți (slider) -->
+    <section class="reviews" id="reviewuri" aria-labelledby="rev-title">
+      <div class="container">
+        <h2 id="rev-title">Ce spun clienții</h2>
 
-    <h2 id="contact">Contact</h2>
-    <p>Dacă vrei să colaborezi cu noi, completează formularul de mai jos:</p>
+        <div class="review-slider" data-review>
+          <button class="car-btn prev" data-rprev aria-label="Înapoi">&larr;</button>
+          <div class="review-viewport">
+            <div class="review-track" data-rtrack>
+              <figure class="review">
+                <blockquote>„Onboarding în 10 zile și livrări predictibile. Am redus backlogul critic cu 45%.”</blockquote>
+                <figcaption>— CTO, fintech european</figcaption>
+              </figure>
+              <figure class="review">
+                <blockquote>„Au adus disciplina DevOps și observability. Incidentele majore au scăzut drastic.”</blockquote>
+                <figcaption>— VP Engineering, marketplace global</figcaption>
+              </figure>
+              <figure class="review">
+                <blockquote>„Design clar și focus pe accesibilitate. Conversiile au crescut constant.”</blockquote>
+                <figcaption>— Head of Product, retail</figcaption>
+              </figure>
+            </div>
+          </div>
+          <button class="car-btn next" data-rnext aria-label="Înainte">&rarr;</button>
+        </div>
+      </div>
+    </section>
 
-    <form action="trimite_formular.php" method="post">
-        <label for="nume">Nume:</label><br>
-        <input type="text" id="nume" name="nume" required><br><br>
+    <!-- Contact form -->
+    <section id="contact" class="contact container" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p class="help-sub">Spune-ne pe scurt ce ai nevoie. Răspundem în 24h lucrătoare.</p>
 
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="grid-3">
+          <label>Nume
+            <input name="nume" required placeholder="Nume Prenume" />
+          </label>
+          <label>Email
+            <input type="email" name="email" required placeholder="you@company.com" />
+          </label>
+          <label>Companie
+            <input name="companie" placeholder="Compania" />
+          </label>
+        </div>
+        <label>Mesaj
+          <textarea name="mesaj" rows="5" required placeholder="Descrie pe scurt proiectul sau rolurile necesare"></textarea>
+        </label>
+        <div class="form-actions">
+          <button class="btn" type="submit">Trimite</button>
+          <span class="muted">Prin trimitere ești de acord cu <a href="#">Politica de confidențialitate</a>.</span>
+        </div>
+        <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
 
-        <label for="mesaj">Mesaj:</label><br>
-        <textarea id="mesaj" name="mesaj" rows="5" cols="30" required></textarea><br><br>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="y"></span> OutsourceX. Toate drepturile rezervate.</small>
+    </div>
+  </footer>
 
-        <input type="submit" value="Trimite">
-    </form>
+  <!-- JS minimal pentru carusele + form -->
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-    <p><a href="#top">Înapoi sus</a></p>
+    // Carousel Servicii
+    (function(){
+      const root = document.querySelector('[data-carousel]');
+      const track = root.querySelector('[data-track]');
+      const prev = root.querySelector('[data-prev]');
+      const next = root.querySelector('[data-next]');
+      const cardWidth = () => root.querySelector('.serv-card').offsetWidth + 16;
 
+      next.addEventListener('click', ()=> {
+        root.querySelector('[data-viewport]').scrollBy({left: cardWidth(), behavior:'smooth'});
+      });
+      prev.addEventListener('click', ()=> {
+        root.querySelector('[data-viewport]').scrollBy({left: -cardWidth(), behavior:'smooth'});
+      });
+    })();
+
+    // Carousel Review-uri
+    (function(){
+      const slider = document.querySelector('[data-review]');
+      const track = slider.querySelector('[data-rtrack]');
+      const prev = slider.querySelector('[data-rprev]');
+      const next = slider.querySelector('[data-rnext]');
+      const itemWidth = () => slider.querySelector('.review').offsetWidth + 16;
+
+      next.addEventListener('click', ()=> {
+        slider.querySelector('.review-viewport').scrollBy({left: itemWidth(), behavior:'smooth'});
+      });
+      prev.addEventListener('click', ()=> {
+        slider.querySelector('.review-viewport').scrollBy({left: -itemWidth(), behavior:'smooth'});
+      });
+    })();
+
+    // Contact form (validare simplă)
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const f = e.currentTarget;
+      const note = document.getElementById('formNote');
+      if (!f.nume.value || !f.email.value || !f.mesaj.value) {
+        note.textContent = "Te rugăm să completezi câmpurile obligatorii.";
+        note.className = "form-note error";
+        return;
+      }
+      note.textContent = "Mulțumim! Te contactăm în curând.";
+      note.className = "form-note success";
+      f.reset();
+    });
+  </script>
 </body>
 </html>
