@@ -1,105 +1,237 @@
-/* Stil simplu, curat și centrat pentru toate paginile */
+/* =======================
+   style.css – INDEX (full)
+   ======================= */
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6fa;
-    color: #222;
-    margin: 0;
-    padding: 0;
+/* ---- Variabile & bază ---- */
+:root{
+  --bg:#ffffff;
+  --ink:#1a1f29;
+  --muted:#6b7280;
+  --brand:#fb6a2a;            /* portocaliu accent */
+  --line:#e6e7eb;
+  --card:#ffffff;
+  --shadow: 0 12px 28px rgba(16,24,40,.08);
+  --radius:16px;
+  --alt:#f9fafb;              /* gri foarte deschis pentru alternanță */
 }
 
-h1 {
-    text-align: center;
-    color: #0a2a66;
-    margin-top: 30px;
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html, body { overflow-x: hidden; }          /* fără scrollbar orizontal global */
+body{
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  color:var(--ink);
+  background:var(--bg);
+}
+img{max-width:100%;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* ---- Butoane ---- */
+.btn{
+  display:inline-block; padding:12px 18px; border-radius:999px;
+  background:var(--brand); color:#fff; text-decoration:none; font-weight:600;
+  box-shadow:var(--shadow); border:1px solid transparent;
+}
+.btn:hover{filter:brightness(0.95)}
+.btn-accent{background:#1f2937;border-color:#1f2937}
+.btn-accent:hover{filter:brightness(1.05)}
+.muted{color:var(--muted); font-size:14px}
+
+/* ---- Header ---- */
+.site-header{position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line)}
+.header-inner{display:flex; align-items:center; justify-content:space-between; height:64px}
+.logo{display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit}
+.logo-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#ff9f43,var(--brand))}
+.logo-text{font-weight:800; letter-spacing:.3px}
+.nav{display:flex; gap:18px}
+.nav a{color:#111827;text-decoration:none;opacity:.85}
+.nav a:hover{opacity:1}
+
+/* ---- Hero ---- */
+.hero{padding:28px 0 10px;background:#fff}
+.hero-inner{display:grid; gap:28px; align-items:center; grid-template-columns:1.1fr .9fr}
+.badge{display:inline-block; background:#fff; border:1px solid var(--line); padding:6px 10px; border-radius:999px; font-weight:600; font-size:13px; box-shadow:var(--shadow)}
+.hero-title{font-size:40px; line-height:1.15; margin:12px 0 8px; text-align:center; letter-spacing:.5px}
+.hero-sub{color:var(--muted); margin:0 auto 14px; max-width:60ch; text-align:center}
+.hero-cta{display:flex; justify-content:center}
+.hero-visual{position:relative; margin:0; border-radius:24px; overflow:hidden; border:1px solid var(--line); box-shadow: var(--shadow)}
+.hero-visual img{aspect-ratio: 4/3; object-fit:cover}
+.floating-tag{position:absolute; top:14px; left:50%; transform:translateX(-50%); background:#fff; border:1px solid var(--line); padding:6px 10px; border-radius:8px; font-weight:700; letter-spacing:.2px}
+
+/* ===========================================================
+   Alternanță de fundal DOAR la secțiunile cerute:
+   - Parteneri & clienți (logos)
+   - Proiecte trecute (projects)
+   - Contact (contact)
+   - Footer (site-footer)
+   =========================================================== */
+
+/* Parteneri & clienți */
+.logos{
+  padding:22px 0 8px;
+  background:var(--alt);              /* alternanță ON */
+  border-top:none;                    /* scoatem linii vizibile */
+  border-bottom:none;
+}
+.logos h2{text-align:center; margin:0}
+.logo-track-wrap{
+  overflow:hidden;
+  border-top:none;                    /* fără linii */
+  border-bottom:none;
+  padding:14px 0; margin-top:10px
+}
+.logo-track{
+  display:flex; gap:28px;
+  width:max-content;
+  will-change: transform;
+  animation: logos 25s linear infinite;
+}
+.logo-track span{
+  padding:10px 16px; border:1px solid var(--line); border-radius:999px;
+  background:#fff; box-shadow:var(--shadow); white-space:nowrap;
+  color:#111827; font-weight:600; font-size:14px;
+}
+@keyframes logos{
+  from{ transform: translateX(0) }
+  to  { transform: translateX(-50%) }
 }
 
-h2 {
-    text-align: center;
-    color: #0a2a66;
-    margin-top: 40px;
+/* ---- Help / Carusel (fundal alb normal) ---- */
+.help{padding:40px 0; background:#fff}
+.help h2{text-align:center; letter-spacing:1px}
+.help-sub{color:var(--muted); text-align:center; margin:6px 0 22px}
+.carousel{position:relative}
+.car-viewport{
+  overflow:auto hidden;                 /* orizontal doar intern */
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;                 /* ascunde scrollbar (Firefox) */
+}
+.car-viewport::-webkit-scrollbar{display:none} /* ascunde scrollbar (WebKit) */
+.car-track{display:flex; gap:16px}
+.serv-card{
+  min-width: 320px; scroll-snap-align:center;
+  background:var(--card); border:1px solid var(--line); border-radius:18px; padding:22px; box-shadow:var(--shadow)
+}
+.serv-card h3{margin:0 0 10px}
+.serv-card ul{margin:0; padding-left:18px}
+.car-btn{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:42px; height:42px; border-radius:50%; border:1px solid var(--line);
+  background:#fff; box-shadow:var(--shadow); cursor:pointer; font-weight:700;
+}
+.car-btn.prev{left:-8px}
+.car-btn.next{right:-8px}
+
+/* ---- Proiecte trecute (alternanță ON) ---- */
+.projects{
+  padding:38px 0;
+  background:var(--alt);              /* alternanță ON */
+  border-top:none; border-bottom:none;
+}
+.projects h2{text-align:center}
+.proj-grid{
+  display:grid; gap:18px; margin-top:10px;
+  grid-template-columns:repeat(3,1fr);
+}
+@media (max-width:960px){ .proj-grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .proj-grid{grid-template-columns:1fr} }
+.card, .proj{
+  background:var(--card); border:1px solid var(--line); border-radius:18px; padding:20px; box-shadow:var(--shadow)
+}
+.proj h3{margin:0 0 6px}
+.proj small{color:var(--muted)}
+
+/* ---- Review-uri (fundal alb normal, fără linii) ---- */
+.reviews{
+  padding:38px 0;
+  background:#fff;                    /* alternanță OFF aici */
+  border-top:none; border-bottom:none;
+}
+.reviews h2{text-align:center}
+.review-slider{position:relative}
+.review-viewport{
+  overflow:auto hidden;
+  scrollbar-width:none;                         /* ascunde scrollbar (Firefox) */
+}
+.review-viewport::-webkit-scrollbar{display:none} /* ascunde scrollbar (WebKit) */
+.review-track{display:flex; gap:16px}
+.review{
+  min-width: 560px; background:#fff; border:1px solid var(--line); border-radius:18px; padding:22px; box-shadow:var(--shadow)
+}
+.review blockquote{margin:0 0 8px; font-size:18px}
+.review figcaption{color:var(--muted)}
+@media (max-width:640px){ .review{min-width:calc(100vw - 60px)} }
+
+/* ---- Contact (alternanță ON, full-width background) ---- */
+.contact{
+  position: relative;                 /* pentru pseudo-element */
+  padding: 28px 0 50px;
+  text-align: left;
+  background: transparent;            /* fundalul real îl punem pe ::before */
+  border-top: none;
 }
 
-p, ul {
-    max-width: 800px;
-    margin: 10px auto;
-    line-height: 1.6;
-    text-align: center;
+/* banda gri care acoperă 100% din lățimea ferestrei */
+.contact::before{
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: calc(50% - 50vw);             /* întinde de la margine la margine */
+  right: calc(50% - 50vw);
+  background: var(--alt);             /* culoarea de alternanță */
+  z-index: -1;                         /* rămâne în spatele conținutului */
 }
 
-ul {
-    list-style-type: square;
-    text-align: left;
-    width: fit-content;
+.contact h2{ text-align: center; }
+.contact .help-sub{ text-align: center; }
+
+.contact-form{
+  max-width: 800px;
+  margin: 14px auto 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow);
 }
 
-a {
-    color: #0a2a66;
-    text-decoration: none;
-    font-weight: bold;
+.grid-3{
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 12px;
 }
+@media (max-width:840px){ .grid-3{ grid-template-columns:1fr; } }
 
-a:hover {
-    text-decoration: underline;
+label{ display:block; font-weight:600; }
+input, textarea{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  margin-top: 6px;
+  font: inherit;
 }
+.form-actions{ display:flex; align-items:center; gap:12px; margin-top:10px; flex-wrap:wrap; }
+.form-note{ margin-top:10px; font-weight:600; }
+.form-note.success{ color:#0a7a3d; }
+.form-note.error{ color:#b00020; }
 
-nav, p:first-of-type {
-    text-align: center;
-    margin-bottom: 20px;
+/* ---- Footer (alternanță ON) ---- */
+.site-footer{
+  background:var(--alt);              /* alternanță ON */
+  border-top:none;                    /* fără linie sus */
 }
+.footer-inner{height:70px; display:flex; align-items:center; justify-content:center}
 
-hr {
-    border: none;
-    height: 1px;
-    background-color: #ccc;
-    width: 80%;
-    margin: 30px auto;
+/* ---- Responsive mici ---- */
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr}
+  .car-btn.prev{left:2px} .car-btn.next{right:2px}
 }
-
-/* Formular centrat și încadrat frumos */
-form {
-    max-width: 400px;
-    margin: 30px auto;
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-    text-align: left;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: 14px;
-}
-
-input[type="submit"] {
-    background-color: #0a2a66;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-input[type="submit"]:hover {
-    background-color: #123d8a;
-}
-
-/* Linkul „înapoi sus” centrat */
-p:last-of-type {
-    text-align: center;
-    margin-top: 40px;
+@media (max-width:740px){
+  .nav{display:none}           /* meniu ascuns pe mobil pentru simplitate */
+  .hero-title{font-size:32px}
 }
