@@ -1,0 +1,44 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e9f5ec;
+  text-align: center;
+  color: #2f4f2f;
+}
+
+h1 {
+  color: #2e8b57;
+}
+
+.imagine {
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #2e8b57;
+  padding: 10px;
+}
+
+th {
+  background-color: #9fe2bf;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #d0f0c0;
+}
+
+p {
+  margin-top: 20px;
+  font-style: italic;
+}

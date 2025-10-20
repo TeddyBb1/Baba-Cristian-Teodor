@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: #fdebcf;
+}
+
+.hero {
+  text-align: center;
+  padding: 28px 16px 10px;
+}
+.hero h1 {
+  color: #f07a1f;
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: bold;
+}
+.hero p {
+  margin: 0;
+  color: #444;
+}
+
+.card {
+  background: #fff;
+  width: 480px;
+  margin: 18px auto 40px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+input[type="text"],
+input[type="tel"],
+select,
+textarea {
+  display: block;
+  width: calc(100% - 14px);
+  padding: 8px;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f9f9f9;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #f07a1f;
+  box-shadow: 0 0 0 3px rgba(240, 122, 31, 0.15);
+  background: #fff;
+}
+
+.boxed {
+  border: 2px solid #f6c58d;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 14px;
+  background: #fffdf8;
+}
+.boxed legend {
+  color: #f07a1f;
+  font-weight: bold;
+  padding: 0 6px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.primary {
+  background: #f07a1f;
+  color: white;
+}
+.primary:hover {
+  background: #e46f15;
+}
+
+.secondary {
+  background: #9e9e9e;
+  color: white;
+}
+.secondary:hover {
+  background: #8c8c8c;
+}
