@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulator preț — OutsourceX</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="simulator.css?v=2" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">OutsourceX</span>
+    </a>
+    <nav class="nav" aria-label="Meniu principal">
+      <a href="index.html">Acasă</a>
+      <a href="servicii.html">Servicii</a>
+      <a href="echipa.html">Echipă</a>
+    </nav>
+    <a class="btn btn-accent" href="index.html#contact">Contact</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero hero--sim">
+    <div class="container hero-inner center">
+      <h1 class="hero-title">Simulează costul proiectului</h1>
+      <p class="hero-sub">Alege tipul de proiect, compoziția echipei și durata ori <strong>setează un deadline</strong>. Primești instant o estimare orientativă.</p>
+    </div>
+  </section>
+
+  <!-- GRID principal -->
+  <section class="sim-grid">
+    <div class="container sim-inner">
+
+      <!-- CONFIGURATOR -->
+      <form id="simForm" class="sim-form" onsubmit="return false" aria-labelledby="simTitle">
+
+        <!-- Pas 1 -->
+        <div class="card">
+          <h2 id="simTitle">1) Tipul proiectului</h2>
+
+          <div class="proj-types">
+            <label class="type-card">
+              <input type="radio" name="ptype" value="augment" checked />
+              <div>
+                <strong>Staff Augmentation</strong>
+                <p class="muted">Suplimentezi echipa cu rolurile necesare.</p>
+              </div>
+            </label>
+            <label class="type-card">
+              <input type="radio" name="ptype" value="fixed" />
+              <div>
+                <strong>Proiect la cheie</strong>
+                <p class="muted">Livrare end-to-end cu milestone-uri clare.</p>
+              </div>
+            </label>
+            <label class="type-card">
+              <input type="radio" name="ptype" value="mixed" />
+              <div>
+                <strong>Echipă mixtă</strong>
+                <p class="muted">Nucleu dedicat + sprijin pe specializări.</p>
+              </div>
+            </label>
+          </div>
+
+          <div class="row">
+            <label class="field">
+              <span>Dată start</span>
+              <input type="date" id="startDate" />
+            </label>
+
+            <label class="field">
+              <span>Deadline</span>
+              <input type="date" id="deadline" />
+            </label>
+
+            <label class="field">
+              <span>Durată (luni)</span>
+              <input type="number" id="duration" min="1" max="36" value="6" />
+            </label>
+
+            <label class="field">
+              <span>Complexitate</span>
+              <select id="complexity">
+                <option value="1">Basic (×1.00)</option>
+                <option value="1.15" selected>Standard (×1.15)</option>
+                <option value="1.3">Avansat (×1.30)</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Monedă</span>
+              <select id="currency">
+                <option value="EUR" selected>EUR</option>
+                <option value="USD">USD</option>
+                <option value="RON">RON</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- Pas 2 -->
+        <div class="card">
+          <h2>2) Compoziția echipei</h2>
+          <p class="muted">Selectează <strong>oameni reali</strong> din echipa noastră sau ajustează manual orele/săptămână. Când există selecții pe rol, cantitatea este setată automat la numărul de persoane alese.</p>
+
+          <div class="team-table">
+            <div class="thead">
+              <div>Rol</div><div>Tarif (€/h)</div><div>Nr.</div><div>Ore/săpt</div><div>Selectează</div><div>Cost lunar</div>
+            </div>
+            <div class="tbody" id="teamBody"><!-- JS inject --></div>
+          </div>
+
+          <details class="custom-role">
+            <summary>Adaugă rol personalizat</summary>
+            <div class="row">
+              <label class="field">
+                <span>Nume rol</span>
+                <input type="text" id="crName" placeholder="Ex: Data Engineer" />
+              </label>
+              <label class="field">
+                <span>Tarif (€/h)</span>
+                <input type="number" id="crRate" min="10" max="300" step="1" value="50" />
+              </label>
+              <button class="btn btn-ghost" id="addCustomRole" type="button">Adaugă rol</button>
+            </div>
+          </details>
+        </div>
+
+        <!-- Pas 3 -->
+        <div class="card">
+          <h2>3) Extra opțiuni</h2>
+          <div class="extras">
+            <label><input type="checkbox" class="extra" data-uplift="0.05" checked /> QA Automation (+5%)</label>
+            <label><input type="checkbox" class="extra" data-uplift="0.07" /> DevOps & Observability (+7%)</label>
+            <label><input type="checkbox" class="extra" data-uplift="0.03" /> Securitate & hardening (+3%)</label>
+            <label><input type="checkbox" class="extra" data-uplift="0.02" /> Suport post-lansare (+2%)</label>
+          </div>
+          <p class="muted small">* Uplifturile se aplică la costul lunar pentru a acoperi tooling, pipeline-uri și overhead.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="card">
+          <div class="row end">
+            <a class="btn" href="#summary">Vezi estimarea</a>
+            <a class="btn btn-accent" href="index.html#contact">Trimite cerere</a>
+          </div>
+        </div>
+      </form>
+
+      <!-- SUMAR -->
+      <aside id="summary" class="summary card">
+        <div class="sum-head">
+          <h2>Estimare</h2>
+          <select id="summaryCurrency" aria-label="Monedă sumar">
+            <option value="EUR" selected>EUR</option>
+            <option value="USD">USD</option>
+            <option value="RON">RON</option>
+          </select>
+        </div>
+
+        <div class="sum-kpis">
+          <div>
+            <small>Cost lunar</small>
+            <div class="big" id="kpiMonthly">€ 0</div>
+          </div>
+          <div>
+            <small>Durată</small>
+            <div class="big"><span id="kpiMonths">0</span> luni</div>
+          </div>
+          <div>
+            <small>Total proiect</small>
+            <div class="big" id="kpiTotal">€ 0</div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="sum-break">
+          <h3>Defalcare</h3>
+          <div id="breakdown"><!-- JS inject --></div>
+        </div>
+
+        <hr />
+        <p class="muted small">
+          * Estimare orientativă bazată pe <strong>160h/lună/persoană</strong> (normă întreagă). Tarifele pot varia în funcție de senioritate, disponibilitate și tipul de contract.
+        </p>
+        <a class="btn btn-accent full" href="index.html#contact">Solicită ofertă detaliată</a>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <small>© <span id="y"></span> OutsourceX. Toate drepturile rezervate.</small>
+  </div>
+</footer>
+
+<!-- === Selector persoane (modal) === -->
+<div id="pickerBackdrop" class="picker-backdrop" hidden>
+  <div class="picker">
+    <div class="picker-head">
+      <h3>Alege persoane pentru rol: <span id="pickerRoleName">—</span></h3>
+      <button type="button" class="picker-close" id="pickerClose">✕</button>
+    </div>
+    <div class="picker-body">
+      <div class="picker-grid" id="pickerGrid"><!-- JS inject --></div>
+    </div>
+    <div class="picker-foot">
+      <button type="button" class="btn btn-ghost" id="pickerCancel">Anulează</button>
+      <button type="button" class="btn" id="pickerSave">Salvează selecția</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // --- Anul ---
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // --- FX & data ---
+  const FX = { EUR:1, USD:1.08, RON:4.95 };
+
+  // Membrii (poze-echipa/1.png … 32.png) — adaptează nume/rol/rate la nevoie
+  const PEOPLE = [
+    {id:1,  name:'I. Popescu',      role:'lead',   rate:70},
+    {id:2,  name:'M. Dobre',        role:'senior', rate:60},
+    {id:3,  name:'V. Radu',         role:'mid',    rate:45},
+    {id:4,  name:'A. Dumitrescu',   role:'devops', rate:65},
+    {id:5,  name:'L. Ionescu',      role:'qa',     rate:35},
+    {id:6,  name:'C. Marinescu',    role:'ux',     rate:45},
+    {id:7,  name:'S. Enache',       role:'pm',     rate:55},
+    {id:8,  name:'G. Petrescu',     role:'senior', rate:60},
+    {id:9,  name:'D. Pavel',        role:'mid',    rate:45},
+    {id:10, name:'A. Stan',         role:'qa',     rate:35},
+    {id:11, name:'R. Manea',        role:'devops', rate:65},
+    {id:12, name:'C. Tudor',        role:'ux',     rate:45},
+    {id:13, name:'B. Georgescu',    role:'lead',   rate:70},
+    {id:14, name:'E. Neagu',        role:'senior', rate:60},
+    {id:15, name:'M. Avram',        role:'mid',    rate:45},
+    {id:16, name:'D. Florescu',     role:'qa',     rate:35},
+    {id:17, name:'T. Oprea',        role:'data',   rate:60},
+    {id:18, name:'F. Mureșan',      role:'mobile', rate:55},
+    {id:19, name:'C. Antonescu',    role:'security', rate:60},
+    {id:20, name:'S. Pătrașcu',     role:'senior', rate:60},
+    {id:21, name:'A. Mihai',        role:'mid',    rate:45},
+    {id:22, name:'G. Pavel',        role:'devops', rate:65},
+    {id:23, name:'R. Truță',        role:'qa',     rate:35},
+    {id:24, name:'D. Drăgan',       role:'ux',     rate:45},
+    {id:25, name:'I. Farkas',       role:'pm',     rate:55},
+    {id:26, name:'M. Nistor',       role:'data',   rate:60},
+    {id:27, name:'V. Preda',        role:'mobile', rate:55},
+    {id:28, name:'A. Ilie',         role:'security', rate:60},
+    {id:29, name:'R. Cristea',      role:'senior', rate:60},
+    {id:30, name:'I. Pavel',        role:'mid',    rate:45},
+    {id:31, name:'D. Banu',         role:'qa',     rate:35},
+    {id:32, name:'L. Pop',          role:'devops', rate:65},
+  ];
+
+  const ROLE_LABELS = {
+    lead:'Tech Lead', senior:'Senior Developer', mid:'Mid Developer', qa:'QA Engineer',
+    ux:'UX/UI Designer', devops:'DevOps Engineer', pm:'Project Manager',
+    data:'Data/ML Engineer', mobile:'Mobile Developer', security:'Security Engineer'
+  };
+
+  // Config implicit pe roluri (include și roluri suplimentare)
+  const BASE_ROLES = [
+    { id:'lead',   name:ROLE_LABELS.lead,   rate:70, qty:1, hours:40, selected:[] },
+    { id:'senior', name:ROLE_LABELS.senior, rate:60, qty:2, hours:40, selected:[] },
+    { id:'mid',    name:ROLE_LABELS.mid,    rate:45, qty:1, hours:40, selected:[] },
+    { id:'qa',     name:ROLE_LABELS.qa,     rate:35, qty:1, hours:30, selected:[] },
+    { id:'ux',     name:ROLE_LABELS.ux,     rate:45, qty:0, hours:20, selected:[] },
+    { id:'devops', name:ROLE_LABELS.devops, rate:65, qty:0, hours:15, selected:[] },
+    { id:'pm',     name:ROLE_LABELS.pm,     rate:55, qty:0, hours:10, selected:[] },
+    { id:'data',   name:ROLE_LABELS.data,   rate:60, qty:0, hours:40, selected:[] },
+    { id:'mobile', name:ROLE_LABELS.mobile, rate:55, qty:0, hours:40, selected:[] },
+    { id:'security', name:ROLE_LABELS.security, rate:60, qty:0, hours:20, selected:[] },
+  ];
+
+  const form = document.getElementById('simForm');
+  const teamBody = document.getElementById('teamBody');
+  const durationEl = document.getElementById('duration');
+  const complexityEl = document.getElementById('complexity');
+  const currencyEl = document.getElementById('currency');
+  const sumCurrEl = document.getElementById('summaryCurrency');
+  const startEl = document.getElementById('startDate');
+  const deadlineEl = document.getElementById('deadline');
+
+  const kpiMonthly = document.getElementById('kpiMonthly');
+  const kpiTotal   = document.getElementById('kpiTotal');
+  const kpiMonths  = document.getElementById('kpiMonths');
+  const breakdown  = document.getElementById('breakdown');
+
+  let roles = JSON.parse(JSON.stringify(BASE_ROLES));
+
+  // ---- Render tabel echipă ----
+  function renderTeam(){
+    teamBody.innerHTML = '';
+    roles.forEach((r, idx)=>{
+      const row = document.createElement('div');
+      row.className = 'tr';
+      row.dataset.idx = idx;
+
+      const selectedCount = r.selected.length;
+      const qtyDisabled = selectedCount > 0 ? 'disabled' : '';
+
+      row.innerHTML = `
+        <div class="rol">
+          <div class="rol-title">${r.name}</div>
+          <div class="chips" id="chips-${r.id}">
+            ${r.selected.map(pid => chipHTML(personById(pid))).join('')}
+          </div>
+        </div>
+        <div><input type="number" class="rate" min="10" max="300" step="1" value="${r.rate}"></div>
+        <div><input type="number" class="qty"  min="0" max="15"  step="1" value="${selectedCount || r.qty}" ${qtyDisabled}></div>
+        <div><input type="number" class="hrs"  min="0" max="40"  step="1" value="${r.hours}"></div>
+        <div class="sel">
+          <button type="button" class="btn btn-ghost pick-btn" data-role="${r.id}">Alege</button>
+          ${selectedCount ? `<small class="muted">selectați: ${selectedCount}</small>`:``}
+        </div>
+        <div class="cost" data-val="0">€ 0</div>
+      `;
+      teamBody.appendChild(row);
+    });
+    // legăm butoanele de picker
+    teamBody.querySelectorAll('.pick-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=> openPicker(btn.dataset.role));
+    });
+  }
+
+  function chipHTML(p){
+    return `<span class="chip"><img src="poze-echipa/${p.id}.png" alt="${p.name}"><em>${p.name}</em></span>`;
+  }
+  function personById(id){ return PEOPLE.find(x=>x.id===id); }
+
+  // ---- Picker persoane ----
+  const pickerBackdrop = document.getElementById('pickerBackdrop');
+  const pickerGrid = document.getElementById('pickerGrid');
+  const pickerRoleName = document.getElementById('pickerRoleName');
+  const pickerClose = document.getElementById('pickerClose');
+  const pickerCancel = document.getElementById('pickerCancel');
+  const pickerSave = document.getElementById('pickerSave');
+  let currentRole = null;
+  let tempSelected = new Set();
+
+  function openPicker(roleId){
+    currentRole = roleId;
+    const r = roles.find(x=>x.id===roleId);
+    pickerRoleName.textContent = r.name;
+    tempSelected = new Set(r.selected);
+
+    // populați gridul cu persoanele filtrate pe rol
+    const people = PEOPLE.filter(p=>p.role===roleId);
+    pickerGrid.innerHTML = people.map(p => `
+      <label class="p-card ${tempSelected.has(p.id)?'on':''}" data-id="${p.id}">
+        <input type="checkbox" ${tempSelected.has(p.id)?'checked':''}/>
+        <img src="poze-echipa/${p.id}.png" alt="${p.name}">
+        <strong>${p.name}</strong>
+        <span class="muted">${ROLE_LABELS[p.role]} • €${p.rate}/h</span>
+      </label>
+    `).join('') || `<p class="muted">Nu avem încă persoane pe acest rol.</p>`;
+
+    pickerGrid.querySelectorAll('.p-card').forEach(card=>{
+      card.addEventListener('click', (e)=>{
+        if(e.target.tagName!=='INPUT'){ card.querySelector('input').checked = !card.querySelector('input').checked; }
+        const id = parseInt(card.dataset.id,10);
+        if(card.querySelector('input').checked){ tempSelected.add(id); card.classList.add('on'); }
+        else{ tempSelected.delete(id); card.classList.remove('on'); }
+      });
+    });
+
+    pickerBackdrop.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function closePicker(){
+    pickerBackdrop.hidden = true;
+    document.body.style.overflow = '';
+  }
+  pickerClose.addEventListener('click', closePicker);
+  pickerCancel.addEventListener('click', closePicker);
+  pickerSave.addEventListener('click', ()=>{
+    if(!currentRole) return;
+    const r = roles.find(x=>x.id===currentRole);
+    r.selected = Array.from(tempSelected);
+    // dacă avem selecții — lock qty = număr selecții
+    renderTeam();
+    compute();
+    closePicker();
+  });
+
+  // ---- Calcule ----
+  const kpiMonths = document.getElementById('kpiMonths');
+
+  function monthsBetween(start, end){
+    if(!start || !end) return null;
+    const s = new Date(start), e = new Date(end);
+    if (e <= s) return 1;
+    const years = e.getFullYear() - s.getFullYear();
+    const months = e.getMonth() - s.getMonth();
+    const days = e.getDate() - s.getDate();
+    let m = years*12 + months + (days>0 ? 1 : 0);
+    return Math.max(1, m);
+  }
+
+  function syncDatesDur(){
+    // dacă am ambele date => setăm durata
+    const s = startEl.value, d = deadlineEl.value;
+    const m = monthsBetween(s,d);
+    if(m){ durationEl.value = m; }
+  }
+  function syncDeadlineFromDuration(){
+    const s = startEl.value;
+    if(!s) return;
+    const m = parseInt(durationEl.value||'1',10);
+    const dt = new Date(s);
+    dt.setMonth(dt.getMonth()+m);
+    // o zi înapoi ca să nu trecem în luna următoare
+    dt.setDate(dt.getDate()-1);
+    deadlineEl.value = dt.toISOString().slice(0,10);
+  }
+
+  function compute(){
+    const months = Math.max(1, parseInt(durationEl.value||'1',10));
+    const cx = parseFloat(complexityEl.value || '1');
+
+    // uplift
+    let uplift = 0;
+    document.querySelectorAll('.extra').forEach(cb=>{
+      if (cb.checked) uplift += parseFloat(cb.dataset.uplift || '0');
+    });
+
+    const curr = sumCurrEl.value = currencyEl.value;
+    const fx = FX[curr] || 1;
+    let monthly = 0;
+    const perRoleBreak = [];
+
+    teamBody.querySelectorAll('.tr').forEach((row, i)=>{
+      const r = roles[i];
+      const rate  = r.rate  = parseFloat(row.querySelector('.rate').value || '0');
+      const hrs   = r.hours = parseInt(row.querySelector('.hrs').value || '0',10);
+      const qtyInput = row.querySelector('.qty');
+      let qty = qtyInput.disabled ? (r.selected.length||0) : parseInt(qtyInput.value||'0',10);
+      if(qty < 0) qty = 0;
+
+      const cost = rate * qty * hrs * 4 * cx;
+      monthly += cost;
+
+      // rând
+      row.querySelector('.cost').textContent = formatMoney(cost * fx, curr);
+
+      // breakdown per nume, dacă există selecții
+      if(r.selected.length){
+        r.selected.forEach(pid=>{
+          const p = personById(pid);
+          perRoleBreak.push({ name: `${r.name} — ${p.name}`, cost: rate * hrs * 4 * cx });
+        });
+      }else if(qty>0){
+        perRoleBreak.push({ name: r.name, cost });
+      }
+    });
+
+    monthly = monthly * (1 + uplift);
+
+    kpiMonths.textContent = months;
+    kpiMonthly.textContent = formatMoney(monthly * fx, curr);
+    kpiTotal.textContent   = formatMoney(monthly * months * fx, curr);
+
+    breakdown.innerHTML = perRoleBreak.length
+      ? perRoleBreak.map(x=>`<div class="br"><span>${x.name}</span><span>${formatMoney(x.cost * fx, curr)}</span></div>`).join('')
+      : '<p class="muted">Nu ai selectat încă resurse.</p>';
+  }
+
+  function formatMoney(v, curr='EUR'){
+    const sym = curr==='EUR'?'€':(curr==='USD'?'$':'lei');
+    return `${sym} ${v.toLocaleString(undefined,{maximumFractionDigits:0})}`;
+  }
+
+  // ---- Init ----
+  // setăm data de start = azi
+  const today = new Date(); startEl.value = today.toISOString().slice(0,10);
+  // deadline default = +6 luni
+  const dflt = new Date(); dflt.setMonth(dflt.getMonth()+6); dflt.setDate(dflt.getDate()-1);
+  deadlineEl.value = dflt.toISOString().slice(0,10);
+
+  renderTeam(); compute();
+
+  // ascultăm schimbări
+  form.addEventListener('input', (e)=>{
+    const c = e.target.classList;
+    if (c.contains('rate') || c.contains('qty') || c.contains('hrs') ||
+        e.target.id==='duration' || e.target.id==='complexity' ||
+        e.target.id==='currency' || c.contains('extra')) {
+      compute();
+    }
+    if(e.target.id==='startDate' || e.target.id==='deadline'){
+      syncDatesDur(); compute();
+    }
+  });
+
+  durationEl.addEventListener('change', ()=>{ syncDeadlineFromDuration(); compute(); });
+  sumCurrEl.addEventListener('change', ()=>{ currencyEl.value = sumCurrEl.value; compute(); });
+
+  document.getElementById('addCustomRole').addEventListener('click', ()=>{
+    const name = (document.getElementById('crName').value || '').trim();
+    const rate = parseFloat(document.getElementById('crRate').value || '0');
+    if(!name || rate<=0) return;
+    roles.push({ id:'custom_'+Date.now(), name, rate, qty:1, hours:40, selected:[] });
+    renderTeam(); compute();
+    document.getElementById('crName').value = '';
+    document.getElementById('crRate').value = '50';
+  });
+</script>
+
+</body>
+</html>

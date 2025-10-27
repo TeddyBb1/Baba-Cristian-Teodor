@@ -219,12 +219,21 @@ input, textarea{
 .form-note.success{ color:#0a7a3d; }
 .form-note.error{ color:#b00020; }
 
-/* ---- Footer (alternanță ON) ---- */
-.site-footer{
-  background:var(--alt);              /* alternanță ON */
-  border-top:none;                    /* fără linie sus */
+/* ---- Footer (alternanță ON + linie separatoare) ---- */
+.site-footer {
+  background: var(--alt);              /* culoarea gri deschis */
+  border-top: 1px solid rgba(0, 0, 0, 0.05); /* linie subtilă de separare */
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.03); /* ușoară umbră interioară pentru profunzime */
 }
-.footer-inner{height:70px; display:flex; align-items:center; justify-content:center}
+
+.footer-inner {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 15px;
+}
 
 /* ---- Responsive mici ---- */
 @media (max-width:960px){

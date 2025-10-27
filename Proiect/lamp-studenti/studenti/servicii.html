@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Servicii — OutsourceX</title>
+  <!-- Stilul comun al site-ului -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Stil dedicat pentru pagina de Servicii -->
+  <link rel="stylesheet" href="servicii.css?v=4" />
+</head>
+<body>
+
+<!-- Header (identic cu homepage) -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">OutsourceX</span>
+    </a>
+    <nav class="nav" aria-label="Meniu principal">
+      <a href="index.html">Acasă</a>
+      <a class="active" href="servicii.html">Servicii</a>
+      <a href="echipa.html">Echipă</a>
+    </nav>
+    <a class="btn btn-accent" href="index.html#contact">Contact</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero hero--servicii">
+    <div class="container hero-inner center">
+      <h1 class="hero-title">Servicii pentru a accelera livrarea</h1>
+      <p class="hero-sub">Modele flexibile, capabilități enterprise și rezultate măsurabile. Alegi ce ai nevoie, noi livrăm predictibil.</p>
+      <div class="hero-cta">
+        <a class="btn" href="simulator.html">Simulează costuri</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELE DE COLABORARE (carusel) -->
+  <section class="help" aria-labelledby="colab-title">
+    <div class="container">
+      <h2 id="colab-title" class="center">Modele de colaborare</h2>
+      <p class="help-sub center">Alegi stilul — noi asigurăm outcome-ul.</p>
+
+      <div class="carousel" data-carousel>
+        <button class="car-btn prev" aria-label="Înapoi" data-prev>&larr;</button>
+        <div class="car-viewport" data-viewport>
+          <div class="car-track" data-track>
+            <article class="serv-card">
+              <h3>Staff Augmentation</h3>
+              <ul>
+                <li>Dezvoltatori validați tehnic</li>
+                <li>Onboarding în 10–14 zile</li>
+                <li>Integrare nativă în procesele tale</li>
+              </ul>
+              <div class="meta-points">
+                <span>Overlapping orar UE/US</span>
+                <span>Tech lead inclus</span>
+              </div>
+            </article>
+
+            <article class="serv-card">
+              <h3>Proiecte la cheie</h3>
+              <ul>
+                <li>Discovery → Arhitectură → Build → QA → DevOps</li>
+                <li>Milestones & demo bilunar</li>
+                <li>SLA & suport post-lansare</li>
+              </ul>
+              <div class="meta-points">
+                <span>Scope clar</span>
+                <span>Raportare transparentă</span>
+              </div>
+            </article>
+
+            <article class="serv-card">
+              <h3>Consultanță & Audit</h3>
+              <ul>
+                <li>Revizuire arhitectură & performanță</li>
+                <li>Security hardening (OWASP)</li>
+                <li>Optimizări costuri cloud</li>
+              </ul>
+              <div class="meta-points">
+                <span>Cloud & K8s</span>
+                <span>Observability</span>
+              </div>
+            </article>
+
+            <article class="serv-card">
+              <h3>AI & Data</h3>
+              <ul>
+                <li>ML Engineering, MLOps</li>
+                <li>NLP, CV, RAG pe documente</li>
+                <li>Data pipelines</li>
+              </ul>
+              <div class="meta-points">
+                <span>OpenAI/PyTorch</span>
+                <span>Evaluare continuă</span>
+              </div>
+            </article>
+
+            <article class="serv-card">
+              <h3>UI/UX & Product</h3>
+              <ul>
+                <li>Design system & prototyping</li>
+                <li>Testare cu utilizatori</li>
+                <li>UX writing & accesibilitate</li>
+              </ul>
+              <div class="meta-points">
+                <span>Design tokens</span>
+                <span>Brand consistency</span>
+              </div>
+            </article>
+
+            <article class="serv-card">
+              <h3>Embedded & IoT</h3>
+              <ul>
+                <li>Firmware & drivere</li>
+                <li>Edge AI</li>
+                <li>Integrare senzori–cloud</li>
+              </ul>
+              <div class="meta-points">
+                <span>Timeseries</span>
+                <span>OTA updates</span>
+              </div>
+            </article>
+          </div>
+        </div>
+        <button class="car-btn next" aria-label="Înainte" data-next>&rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITĂȚI TEHNICE -->
+  <section class="projects" aria-labelledby="cap-title">
+    <div class="container">
+      <h2 id="cap-title" class="center">Capabilități tehnice</h2>
+      <p class="help-sub center">Acoperim cap-coadă ciclul de viață al produsului — de la idee la scalare.</p>
+
+      <div class="capabilities">
+        <div class="cap">
+          <h3>Frontend</h3>
+          <div class="tags"><span>React</span><span>Next.js</span><span>Vue</span><span>TypeScript</span><span>Tailwind</span><span>Vitest</span></div>
+          <p class="cap-desc">Interfețe rapide, accesibile, SEO-ready. Design system & componente reutilizabile.</p>
+        </div>
+
+        <div class="cap">
+          <h3>Backend</h3>
+          <div class="tags"><span>Node</span><span>Python</span><span>Go</span><span>FastAPI</span><span>NestJS</span><span>gRPC</span></div>
+          <p class="cap-desc">API-uri scalabile, observabile, cu autentificare, rate-limiting & caching.</p>
+        </div>
+
+        <div class="cap">
+          <h3>Data & AI/ML</h3>
+          <div class="tags"><span>Airflow</span><span>dbt</span><span>RAG</span><span>PyTorch</span><span>OpenAI</span><span>Vector DB</span></div>
+          <p class="cap-desc">Pipelines robuste, modele utile businessului, MLOps & evaluare continuă.</p>
+        </div>
+
+        <div class="cap">
+          <h3>Cloud & DevOps</h3>
+          <div class="tags"><span>AWS</span><span>GCP</span><span>Kubernetes</span><span>Terraform</span><span>ArgoCD</span><span>GitHub Actions</span></div>
+          <p class="cap-desc">Delivery sigur, cost-eficient. Infrastructură declarativă & environment parity.</p>
+        </div>
+
+        <div class="cap">
+          <h3>Platform & Observability</h3>
+          <div class="tags"><span>Prometheus</span><span>Grafana</span><span>Tempo</span><span>Loki</span><span>OpenTelemetry</span></div>
+          <p class="cap-desc">Monitorizare end-to-end: loguri, metrici, trace-uri, SLO-uri & alertare sănătoasă.</p>
+        </div>
+
+        <div class="cap">
+          <h3>Security & Compliance</h3>
+          <div class="tags"><span>OWASP</span><span>SDLC</span><span>SAST/DAST</span><span>Vault</span><span>GDPR</span></div>
+          <p class="cap-desc">Security by design, secret management, audit & hardening. Procese repetabile.</p>
+        </div>
+
+        <div class="cap">
+          <h3>Mobile</h3>
+          <div class="tags"><span>iOS</span><span>Android</span><span>Flutter</span><span>KMM</span></div>
+          <p class="cap-desc">Experiențe mobile optimizate, CI/CD rapid, feature flags & analytics.</p>
+        </div>
+
+        <div class="cap">
+          <h3>Embedded & IoT</h3>
+          <div class="tags"><span>Edge AI</span><span>MQTT</span><span>OTA</span><span>Timeseries</span></div>
+          <p class="cap-desc">Firmware, drivere, ingestie date, procesare la margine & integrare cloud.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA largă – Simulează proiectul -->
+  <section class="cta-wide">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-icon" aria-hidden="true">⏱️</div>
+        <div class="cta-copy">
+          <h3>Estimăm un plan și un cost în 10 minute</h3>
+          <p class="muted">Răspunzi la câteva întrebări, iar noi îți generăm o estimare orientativă + recomandări.</p>
+        </div>
+        <a href="simulator.html" class="btn btn-accent">Simulează proiectul</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESUL NOSTRU -->
+  <section class="help alt" aria-labelledby="proc-title">
+    <div class="container">
+      <h2 id="proc-title" class="center">Procesul nostru</h2>
+      <p class="help-sub center">Transparent și repetabil — ca să știi mereu unde suntem.</p>
+
+      <div class="steps steps--xl">
+        <div class="step">
+          <span>1</span><strong>Discovery & Scope</strong>
+          <p>Înțelegem obiectivele, constrângerile și definim success metrics (KPI, SLO). Livrăm un scurt document de scop.</p>
+        </div>
+        <div class="step">
+          <span>2</span><strong>Arhitectură & Plan</strong>
+          <p>Propunem arhitectura țintă, împărțim backlogul în milestone-uri și stabilim riscuri + strategii de mitigare.</p>
+        </div>
+        <div class="step">
+          <span>3</span><strong>Build Iterativ</strong>
+          <p>Livrăm pe sprinturi scurte cu code review, feature flags, testare automată și demo bilunar.</p>
+        </div>
+        <div class="step">
+          <span>4</span><strong>Quality & SecOps</strong>
+          <p>Observability, testare end-to-end, scanări de securitate, hardening & backup. Procese SDLC incluse.</p>
+        </div>
+        <div class="step">
+          <span>5</span><strong>Lansare controlată</strong>
+          <p>Release gradual, canar/blue-green, rollback plan, documentație & training pentru echipa ta.</p>
+        </div>
+        <div class="step">
+          <span>6</span><strong>SLA & Îmbunătățiri</strong>
+          <p>Monitorizare post-lansare, suport pe nivele, optimizări continue bazate pe date și feedback.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REZULTATE REALE -->
+  <section class="projects" aria-labelledby="case-title">
+    <div class="container">
+      <h2 id="case-title" class="center">Rezultate reale</h2>
+      <p class="help-sub center">Impact măsurabil în producție.</p>
+
+      <div class="proj-grid">
+        <article class="proj card">
+          <div class="kpi"><span class="badge-kpi good">-38% timp KYC</span></div>
+          <h3>Fintech KYC</h3>
+          <p>Automatizare CV + OCR pe acte, integrare cu sisteme legacy.</p>
+          <small>Python · FastAPI · React · K8s</small>
+        </article>
+
+        <article class="proj card">
+          <div class="kpi"><span class="badge-kpi good">+21% conversii</span></div>
+          <h3>Retail headless</h3>
+          <p>Replatforming + optimizări performanță, design de checkout clar.</p>
+          <small>Next.js · Node · Redis</small>
+        </article>
+
+        <article class="proj card">
+          <div class="kpi"><span class="badge-kpi warn">-30% downtime</span></div>
+          <h3>IoT Predictive</h3>
+          <p>Modele pe senzori, alerte proactive, timeseries analytics.</p>
+          <small>Go · Edge · Timescale</small>
+        </article>
+
+        <article class="proj card">
+          <div class="kpi"><span class="badge-kpi good">-45% backlog critic</span></div>
+          <h3>Marketplace global</h3>
+          <p>Team augmentation + DevOps. Stabilizare release-uri și observability.</p>
+          <small>Node · React · ArgoCD · OTel</small>
+        </article>
+
+        <article class="proj card">
+          <div class="kpi"><span class="badge-kpi info">1.4s LCP</span></div>
+          <h3>Portal public</h3>
+          <p>Refactor frontend, optimizări Web Vitals și accesibilitate.</p>
+          <small>React · Next · CDN</small>
+        </article>
+
+        <article class="proj card">
+          <div class="kpi"><span class="badge-kpi good">0 P1 în 90 zile</span></div>
+          <h3>Banking Mobile</h3>
+          <p>Stabilitate și securitate îmbunătățite, pipeline CI/CD pe ramuri.</p>
+          <small>Kotlin · Swift · Firebase</small>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq help" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title" class="center">Întrebări frecvente</h2>
+
+      <details>
+        <summary>Care este timpul tipic de ramp-up?</summary>
+        De regulă 10–14 zile pentru integrare, acces și conturi. În paralel pregătim mediile și pipeline-urile.
+      </details>
+
+      <details>
+        <summary>Putem începe cu un MVP și apoi să scalăm?</summary>
+        Da. Lucrăm incremental cu milestone-uri. Măsurăm impactul și optimizăm pe baza datelor.
+      </details>
+
+      <details>
+        <summary>Cu ce toolchain lucrați?</summary>
+        Ne aliniem la ecosistemul tău (Jira/Azure DevOps, GitHub/GitLab, CI/CD). Avem template-uri gata de folosit.
+      </details>
+
+      <details>
+        <summary>Ce se întâmplă după lansare?</summary>
+        Oferim SLA pe nivele, rotații on-call, observability, rapoarte lunare și propuneri de îmbunătățire.
+      </details>
+
+      <details>
+        <summary>Cum gestionați securitatea și datele?</summary>
+        SDLC cu scanări automate, least-privilege, rotație secrete, audit trail. Respectăm GDPR și bune practici cloud.
+      </details>
+
+      <details>
+        <summary>Ce tipuri de contracte susțineți?</summary>
+        Time & materials, milestone-based sau proiect la cheie. DPA și politici de confidențialitate disponibile.
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="help">
+    <div class="container center">
+      <h2>Hai să livrăm împreună</h2>
+      <a class="btn" href="index.html#contact">Trimite mesaj</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <small>© <span id="y"></span> OutsourceX. Toate drepturile rezervate.</small>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Carusel (identic cu home), cu snap la cel mai apropiat card
+  (function(){
+    const root = document.querySelector('[data-carousel]');
+    if(!root) return;
+    const viewport = root.querySelector('[data-viewport]');
+    const prev = root.querySelector('[data-prev]');
+    const next = root.querySelector('[data-next]');
+
+    function page(){ return viewport.offsetWidth || 320; }
+
+    next.addEventListener('click', ()=> viewport.scrollBy({left: page(), behavior: 'smooth'}));
+    prev.addEventListener('click', ()=> viewport.scrollBy({left: -page(), behavior: 'smooth'}));
+
+    let t;
+    viewport.addEventListener('scroll', ()=>{
+      clearTimeout(t);
+      t = setTimeout(()=>{
+        const cards = [...viewport.querySelectorAll('.serv-card')];
+        if(!cards.length) return;
+        const left = viewport.scrollLeft;
+        let best = {d:Infinity, x:left};
+        for(const c of cards){
+          const x = c.offsetLeft - 16; // compensează gap-ul
+          const d = Math.abs(x - left);
+          if(d < best.d) best = {d, x};
+        }
+        viewport.scrollTo({left: best.x, behavior:'smooth'});
+      }, 120);
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+:root{
+  /* Paleta principală (identică cu index) */
+  --bg:#ffffff;
+  --ink:#1a1f29;
+  --muted:#6b7280;
+  --brand:#fb6a2a;           /* portocaliu accent */
+  --line:#e6e7eb;
+  --card:#ffffff;
+  --shadow:0 12px 28px rgba(16,24,40,.08);
+  --radius:16px;
+
+  /* Stări */
+  --ok:#16a34a; --warn:#f59e0b; --bad:#ef4444; --info:#3b82f6;
+}
+
+/* Reset de bază */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.hidden{display:none}
+
+/* Butoane – solid brand, fără gradient */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:10px 14px; border-radius:10px; border:1px solid transparent; cursor:pointer;
+  background:var(--brand); color:#fff; font-weight:700; box-shadow:var(--shadow);
+  transition:background .15s ease, transform .02s ease;
+}
+.btn:hover{ background:#e66022 }
+.btn:active{ transform:translateY(1px) }
+
+.btn-secondary{ background:#f8fafc; border:1px solid var(--line); color:var(--ink) }
+.btn-secondary:hover{ background:#f3f4f6 }
+.btn-ghost{ background:transparent; border:1px solid var(--line); color:var(--ink) }
+.btn-ghost:hover{ background:#f8fafc }
+
+/* Layout */
+.app{display:grid; grid-template-columns:260px 1fr; min-height:100dvh}
+
+/* Sidebar — LIGHT ca pe index */
+.sidebar{
+  background:var(--card);
+  border-right:1px solid var(--line);
+  display:flex; flex-direction:column;
+}
+.sidebar-head{
+  display:flex; align-items:center; gap:10px; padding:16px;
+  border-bottom:1px solid var(--line); font-weight:800; color:var(--ink);
+}
+.logo-mark{width:22px;height:22px;border-radius:6px;background:var(--brand)}
+.side-nav{display:grid; padding:10px}
+.side-nav a{
+  color:var(--ink); padding:10px 14px; border-radius:12px; border:1px solid transparent;
+  transition:background .15s ease, border-color .15s ease, color .15s ease;
+}
+.side-nav a:hover{ background:#f8fafc; border-color:var(--line) }
+.side-nav a.active{ background:#fff0e7; border-color:#ffd8c3; color:#7a2e0e }
+.side-foot{ margin-top:auto; padding:14px }
+
+/* Conținut / Topbar — LIGHT (fără bară închisă) */
+.content{ display:grid; grid-template-rows:auto 1fr; background:var(--bg) }
+.topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px; border-bottom:1px solid var(--line); background:var(--card);
+}
+.search input{
+  width:320px; max-width:50vw; padding:10px 12px; border-radius:10px;
+  border:1px solid var(--line); background:#fff; color:var(--ink);
+}
+.pill{
+  display:inline-flex; align-items:center; padding:6px 10px; border-radius:999px;
+  border:1px solid var(--line); background:#f8fafc; color:var(--ink); font-weight:700; font-size:13px;
+}
+.pill.online::before{content:"●"; color:var(--ok); margin-right:6px}
+
+/* Secțiuni */
+.view{ padding:18px }
+.view h1{ margin:6px 0 8px }
+.muted{ color:var(--muted) }
+
+/* Toolbar */
+.toolbar{ display:flex; gap:10px; align-items:center; margin:8px 0 12px }
+.toolbar select{
+  padding:10px 12px; border-radius:10px; border:1px solid var(--line);
+  background:#fff; color:var(--ink);
+}
+
+/* Grid Proiecte (tabel + timeline) */
+.projects-grid{ display:grid; grid-template-columns:2fr 1.2fr; gap:20px; margin-top:14px }
+@media (max-width:1000px){ .projects-grid{ grid-template-columns:1fr } }
+
+/* Carduri */
+.card{
+  background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);
+}
+
+/* Tabel proiecte — linii subtile, dashed discret */
+.table{ overflow:auto hidden }
+.thead, .tbody .tr{
+  display:grid; grid-template-columns:2fr 1.2fr 1fr 1.2fr 1fr;
+  gap:10px; padding:10px 12px; align-items:center;
+}
+.thead{ font-weight:800; color:#475569; border-bottom:1px solid var(--line) }
+.tbody .tr{ border-bottom:1px dashed var(--line) }
+
+/* Badge-uri (light) */
+.badge{
+  padding:6px 8px; border-radius:999px; font-weight:800; font-size:12px;
+  background:#f8fafc; border:1px solid var(--line); color:var(--ink);
+}
+.badge.green{ background:#ecfdf5; border-color:#bbf7d0; color:#065f46 }
+.badge.yellow{ background:#fffbeb; border-color:#fde68a; color:#92400e }
+.badge.blue{ background:#eff6ff; border-color:#bfdbfe; color:#1e40af }
+.badge.red{ background:#fef2f2; border-color:#fecaca; color:#7f1d1d }
+
+/* Timeline (light) */
+.activity-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px }
+.activity-filter{
+  padding:8px 10px; border-radius:10px; border:1px solid var(--line); background:#fff; color:var(--ink);
+}
+
+.timeline{ list-style:none; margin:0; padding:0; display:grid; gap:12px; position:relative }
+.timeline li{
+  display:grid; grid-template-columns:14px 1fr; gap:10px; align-items:start; position:relative; padding:6px 0;
+}
+.timeline li::before{
+  content:""; position:absolute; left:6px; top:0; bottom:-12px;
+  width:2px; background:var(--line); opacity:.8;
+}
+.timeline li:last-child::before{ bottom:0 }
+.timeline .dot{ width:10px; height:10px; border-radius:999px; display:inline-block; margin-top:6px; background:#cbd5e1 }
+.timeline .dot.green{ background:#16a34a } .timeline .dot.yellow{ background:#f59e0b }
+.timeline .dot.blue{ background:#3b82f6 } .timeline .dot.red{ background:#ef4444 }
+
+.timeline .item .title{ font-weight:600; margin-bottom:2px; color:var(--ink); font-size:15px }
+.timeline .item .meta{ color:var(--muted); font-size:13px }
+.timeline .item .who{ color:#111827; font-weight:700 }
+
+.t-badge{
+  display:inline-flex; align-items:center; padding:2px 6px; border-radius:999px;
+  border:1px solid var(--line); background:#f8fafc; font-size:11px; font-weight:700; color:var(--ink);
+}
+.t-badge.green{ background:#ecfdf5; border-color:#bbf7d0; color:#065f46 }
+.t-badge.yellow{ background:#fffbeb; border-color:#fde68a; color:#92400e }
+.t-badge.blue{ background:#eff6ff; border-color:#bfdbfe; color:#1e40af }
+.t-badge.red{ background:#fef2f2; border-color:#fecaca; color:#7f1d1d }
+
+/* Accesibilitate */
+:focus-visible{ outline:2px solid #94f0de; outline-offset:2px }

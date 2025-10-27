@@ -1,0 +1,40 @@
+:root{
+  --bg:#ffffff;
+  --ink:#1a1f29;
+  --muted:#6b7280;
+  --brand:#fb6a2a;
+  --line:#e6e7eb;
+  --card:#ffffff;
+  --shadow:0 12px 28px rgba(16,24,40,.08);
+  --radius:16px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+
+.login-wrap{ min-height:100dvh; display:grid; place-items:center; padding:24px }
+.login-card{
+  width:100%; max-width:420px; background:var(--card);
+  border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px; box-shadow:var(--shadow);
+}
+.brand{display:flex; align-items:center; gap:10px; font-size:18px; font-weight:800; color:var(--ink)}
+.logo-mark{width:22px;height:22px;border-radius:6px;background:var(--brand)}
+.muted{color:var(--muted)}
+
+.login-form{display:grid; gap:12px; margin:12px 0}
+.login-form label{display:grid; gap:6px; font-weight:700; color:var(--ink)}
+.login-form input{
+  padding:10px 12px; border-radius:10px; border:1px solid var(--line);
+  background:#fff; color:var(--ink);
+}
+.note{min-height:20px; color:var(--muted)}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:10px 14px; border-radius:10px; border:1px solid transparent; cursor:pointer;
+  background:var(--brand); color:#fff; font-weight:700; box-shadow:var(--shadow);
+  transition:background .15s ease, transform .02s ease;
+}
+.btn:hover{ background:#e66022 }
+.btn:active{ transform:translateY(1px) }

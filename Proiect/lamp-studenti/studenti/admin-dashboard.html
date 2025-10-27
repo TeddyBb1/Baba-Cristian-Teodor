@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OutsourceX - Admin Dashboard</title>
+  <link rel="stylesheet" href="admin-dashboard.css?v=4">
+</head>
+<body>
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-head">
+      <div class="logo-mark"></div>
+      <span>OutsourceX</span>
+    </div>
+    <nav class="side-nav">
+      <a href="#" data-view="projects" class="active">📁 Proiecte</a>
+      <a href="#" data-view="contact">📨 Formulare Contact</a>
+    </nav>
+    <div class="side-foot">
+      <button id="logoutBtn" class="btn-ghost" style="width:100%">Logout</button>
+    </div>
+  </aside>
+
+  <!-- Content -->
+  <main class="content">
+    <header class="topbar">
+      <div class="search">
+        <input type="text" placeholder="Caută proiecte, persoane..." />
+      </div>
+      <div class="pill online">Admin</div>
+    </header>
+
+    <!-- View: Proiecte -->
+    <section class="view" id="view-projects">
+      <h1>Proiecte</h1>
+      <div class="toolbar">
+        <select id="statusFilter" aria-label="Filtrează după stare">
+          <option value="all">Toate stările</option>
+          <option value="in-derulare">În derulare</option>
+          <option value="qa-uat">QA/UAT</option>
+          <option value="planificare">Planificare</option>
+          <option value="risc">Risc</option>
+          <option value="finalizat">Finalizat</option>
+        </select>
+        <button class="btn btn-secondary" disabled>+ Adaugă proiect</button>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Lista proiectelor -->
+        <div class="project-table card">
+          <h3>Lista proiectelor active</h3>
+          <div class="table">
+            <div class="thead">
+              <div>Nume</div><div>Client</div><div>Stare</div><div>Lead</div><div>Deadline</div>
+            </div>
+            <div class="tbody">
+              <div class="tr" data-status="in-derulare">
+                <div>KYC Platform</div><div>Fintech EU</div>
+                <div><span class="badge green">În derulare</span></div>
+                <div>I. Popescu</div><div>15 Dec</div>
+              </div>
+
+              <div class="tr" data-status="qa-uat">
+                <div>Retail App</div><div>Retailer</div>
+                <div><span class="badge yellow">QA/UAT</span></div>
+                <div>M. Dobre</div><div>30 Nov</div>
+              </div>
+
+              <div class="tr" data-status="planificare">
+                <div>Edge IoT</div><div>Manufacturing</div>
+                <div><span class="badge blue">Planificare</span></div>
+                <div>V. Radu</div><div>—</div>
+              </div>
+
+              <div class="tr" data-status="risc">
+                <div>Legacy Migration</div><div>Banking</div>
+                <div><span class="badge red">Risc</span></div>
+                <div>A. Dumitrescu</div><div>10 Ian</div>
+              </div>
+
+              <div class="tr" data-status="finalizat">
+                <div>ERP Modernizare</div><div>Industrial</div>
+                <div><span class="badge green">Finalizat</span></div>
+                <div>S. Enache</div><div>22 Oct</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activitate recentă -->
+        <div class="project-activity card">
+          <div class="activity-header">
+            <h3>Activitate recentă</h3>
+            <select class="activity-filter">
+              <option>Toate proiectele</option>
+            </select>
+          </div>
+          <ul class="timeline">
+            <li>
+              <span class="dot green"></span>
+              <div class="item">
+                <div class="title">Retail App — trecut în QA/UAT <span class="t-badge yellow">QA/UAT</span></div>
+                <div class="meta">azi, 09:40 • <span class="who">M. Dobre</span></div>
+              </div>
+            </li>
+            <li>
+              <span class="dot blue"></span>
+              <div class="item">
+                <div class="title">Edge IoT — finalizat <span class="t-badge blue">Design arhitectură</span></div>
+                <div class="meta">ieri, 18:10 • <span class="who">V. Radu</span></div>
+              </div>
+            </li>
+            <li>
+              <span class="dot red"></span>
+              <div class="item">
+                <div class="title">Legacy Migration — marcat <span class="t-badge red">Risc</span></div>
+                <div class="meta">ieri, 12:25 • <span class="who">A. Dumitrescu</span></div>
+              </div>
+            </li>
+            <li>
+              <span class="dot green"></span>
+              <div class="item">
+                <div class="title">KYC Platform — release <span class="t-badge green">v1.4.2</span></div>
+                <div class="meta">19 oct, 17:05 • <span class="who">I. Popescu</span></div>
+              </div>
+            </li>
+            <li>
+              <span class="dot gray"></span>
+              <div class="item">
+                <div class="title">Nou ticket: „optimizare cache API”</div>
+                <div class="meta">19 oct, 10:31 • <span class="who">Sistem</span></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- View: Contacte -->
+    <section class="view hidden" id="view-contact">
+      <h1>Formulare Contact</h1>
+      <p class="muted">Aici vor apărea cererile primite din formularul de pe site după conectarea bazei de date.</p>
+    </section>
+
+  </main>
+</div>
+
+<!-- === Script principal === -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+
+  // --- Navigare între secțiuni ---
+  const links = document.querySelectorAll('.side-nav a');
+  const views = document.querySelectorAll('.view');
+  links.forEach(link => link.addEventListener('click', e => {
+    e.preventDefault();
+    links.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+    views.forEach(v => v.classList.add('hidden'));
+    document.querySelector('#view-' + link.dataset.view).classList.remove('hidden');
+  }));
+
+  // --- Logout simplu ---
+  document.getElementById('logoutBtn').addEventListener('click', ()=>{
+    localStorage.removeItem('loggedIn');
+    window.location.href = 'admin-login.html';
+  });
+
+  // --- Filtru stări ---
+  const statusFilter = document.getElementById('statusFilter');
+  const projectRows  = document.querySelectorAll('#view-projects .tbody .tr');
+
+  function applyStatusFilter(){
+    const val = (statusFilter?.value || 'all');
+    projectRows.forEach(row=>{
+      const rowStatus = row.dataset.status || '';
+      const show = (val==='all') || (rowStatus===val);
+      row.style.display = show ? 'grid' : 'none';
+    });
+  }
+
+  if(statusFilter){
+    statusFilter.addEventListener('change', applyStatusFilter);
+    applyStatusFilter();
+  }
+
+  document.querySelector('[data-view="projects"]')?.addEventListener('click',()=>{
+    setTimeout(applyStatusFilter,0);
+  });
+
+});
+</script>
+
+</body>
+</html>
