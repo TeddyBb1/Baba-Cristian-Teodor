@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercitiul 4</title>
+</head>
+<body>
+  <h1>Rezultatele se vad in consola (F12)</h1>
+
+  <script>
+    let a1 = 25, b1 = 4, c1 = 25, d1 = 16;
+
+    if ((a1 === b1 && c1 === d1) || (a1 === c1 && b1 === d1) || (a1 === d1 && b1 === c1)) {
+      let perimetru1 = 2 * (a1 + b1);
+      let aria1 = a1 * b1;
+      console.log("Cele 4 numere pot reprezenta laturile unui dreptunghi!");
+      console.log(`Perimetrul este: ${perimetru1}. Aria este: ${aria1}.`);
+    } else {
+      console.log("Cele 4 numere nu pot reprezenta laturile unui dreptunghi!");
+    }
+
+    let a2 = 13, b2 = 17, c2 = 13, d2 = 17;
+
+    if ((a2 === b2 && c2 === d2) || (a2 === c2 && b2 === d2) || (a2 === d2 && b2 === c2)) {
+      let perimetru2 = 2 * (a2 + b2);
+      let aria2 = a2 * b2;
+      console.log("Cele 4 numere pot reprezenta laturile unui dreptunghi!");
+      console.log(`Perimetrul este: ${perimetru2}. Aria este: ${aria2}.`);
+    } else {
+      console.log("Cele 4 numere nu pot reprezenta laturile unui dreptunghi!");
+    }
+  </script>
+</body>
+</html>
