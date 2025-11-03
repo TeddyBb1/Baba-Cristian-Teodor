@@ -133,3 +133,37 @@
 }
 .faq summary{ cursor:pointer; font-weight:700 }
 .faq details[open]{ border-color:#ffd8c3; background:#fffaf6 }
+
+/* ===== Buton Back to Top ===== */
+#backToTop {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  z-index: 2000;
+}
+
+#backToTop:hover {
+  background: #e85e1f; /* nuanță mai închisă la hover */
+  transform: translateY(0) scale(1.08);
+}
+
+/* apare când adăugăm clasa show */
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}

@@ -37,15 +37,93 @@ img{max-width:100%;display:block}
 .btn-accent:hover{filter:brightness(1.05)}
 .muted{color:var(--muted); font-size:14px}
 
+/* ---- Utilitare accesibilitate ---- */
+.sr-only{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
 /* ---- Header ---- */
-.site-header{position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line)}
-.header-inner{display:flex; align-items:center; justify-content:space-between; height:64px}
+.site-header{
+  position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line)
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  height:64px; gap:16px;
+  position:relative;             /* pentru meniul mobil poziționat absolut */
+}
 .logo{display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit}
 .logo-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#ff9f43,var(--brand))}
 .logo-text{font-weight:800; letter-spacing:.3px}
 .nav{display:flex; gap:18px}
 .nav a{color:#111827;text-decoration:none;opacity:.85}
 .nav a:hover{opacity:1}
+
+/* Hamburger SVG (mobil) */
+.hamburger{
+  display:none;                  /* ascuns pe desktop */
+  cursor:pointer;
+  margin-left:auto;
+}
+.hamburger input{
+  display:none;
+}
+.hamburger svg{
+  height:2.2rem;
+  width:auto;
+  display:block;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.line{
+  fill:none;
+  stroke:var(--ink);
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-width:3;
+  transition:
+    stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.line-top-bottom{
+  stroke-dasharray:12 63;
+}
+.hamburger input:checked + svg{
+  transform:rotate(-45deg);
+}
+.hamburger input:checked + svg .line-top-bottom{
+  stroke-dasharray:20 300;
+  stroke-dashoffset:-32.42;
+}
+
+/* Meniu mobil dropdown */
+.nav-mobile{
+  position:absolute;
+  top:110%;
+  right:20px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  padding:8px 0;
+  display:none;                  /* ascuns implicit */
+  flex-direction:column;
+  min-width:180px;
+  z-index:20;
+}
+.nav-mobile a{
+  padding:8px 16px;
+  text-decoration:none;
+  color:var(--ink);
+  font-weight:500;
+  font-size:14px;
+}
+.nav-mobile a:hover{
+  background:#f9fafb;
+}
 
 /* ---- Hero ---- */
 .hero{padding:28px 0 10px;background:#fff}
@@ -58,25 +136,17 @@ img{max-width:100%;display:block}
 .hero-visual img{aspect-ratio: 4/3; object-fit:cover}
 .floating-tag{position:absolute; top:14px; left:50%; transform:translateX(-50%); background:#fff; border:1px solid var(--line); padding:6px 10px; border-radius:8px; font-weight:700; letter-spacing:.2px}
 
-/* ===========================================================
-   Alternanță de fundal DOAR la secțiunile cerute:
-   - Parteneri & clienți (logos)
-   - Proiecte trecute (projects)
-   - Contact (contact)
-   - Footer (site-footer)
-   =========================================================== */
-
 /* Parteneri & clienți */
 .logos{
   padding:22px 0 8px;
-  background:var(--alt);              /* alternanță ON */
-  border-top:none;                    /* scoatem linii vizibile */
+  background:var(--alt);
+  border-top:none;
   border-bottom:none;
 }
 .logos h2{text-align:center; margin:0}
 .logo-track-wrap{
   overflow:hidden;
-  border-top:none;                    /* fără linii */
+  border-top:none;
   border-bottom:none;
   padding:14px 0; margin-top:10px
 }
@@ -96,17 +166,17 @@ img{max-width:100%;display:block}
   to  { transform: translateX(-50%) }
 }
 
-/* ---- Help / Carusel (fundal alb normal) ---- */
+/* ---- Help / Carusel ---- */
 .help{padding:40px 0; background:#fff}
 .help h2{text-align:center; letter-spacing:1px}
 .help-sub{color:var(--muted); text-align:center; margin:6px 0 22px}
 .carousel{position:relative}
 .car-viewport{
-  overflow:auto hidden;                 /* orizontal doar intern */
+  overflow:auto hidden;
   scroll-snap-type:x mandatory;
-  scrollbar-width:none;                 /* ascunde scrollbar (Firefox) */
+  scrollbar-width:none;
 }
-.car-viewport::-webkit-scrollbar{display:none} /* ascunde scrollbar (WebKit) */
+.car-viewport::-webkit-scrollbar{display:none}
 .car-track{display:flex; gap:16px}
 .serv-card{
   min-width: 320px; scroll-snap-align:center;
@@ -122,10 +192,10 @@ img{max-width:100%;display:block}
 .car-btn.prev{left:-8px}
 .car-btn.next{right:-8px}
 
-/* ---- Proiecte trecute (alternanță ON) ---- */
+/* ---- Proiecte trecute ---- */
 .projects{
   padding:38px 0;
-  background:var(--alt);              /* alternanță ON */
+  background:var(--alt);
   border-top:none; border-bottom:none;
 }
 .projects h2{text-align:center}
@@ -141,19 +211,19 @@ img{max-width:100%;display:block}
 .proj h3{margin:0 0 6px}
 .proj small{color:var(--muted)}
 
-/* ---- Review-uri (fundal alb normal, fără linii) ---- */
+/* ---- Review-uri ---- */
 .reviews{
   padding:38px 0;
-  background:#fff;                    /* alternanță OFF aici */
+  background:#fff;
   border-top:none; border-bottom:none;
 }
 .reviews h2{text-align:center}
 .review-slider{position:relative}
 .review-viewport{
   overflow:auto hidden;
-  scrollbar-width:none;                         /* ascunde scrollbar (Firefox) */
+  scrollbar-width:none;
 }
-.review-viewport::-webkit-scrollbar{display:none} /* ascunde scrollbar (WebKit) */
+.review-viewport::-webkit-scrollbar{display:none}
 .review-track{display:flex; gap:16px}
 .review{
   min-width: 560px; background:#fff; border:1px solid var(--line); border-radius:18px; padding:22px; box-shadow:var(--shadow)
@@ -162,26 +232,23 @@ img{max-width:100%;display:block}
 .review figcaption{color:var(--muted)}
 @media (max-width:640px){ .review{min-width:calc(100vw - 60px)} }
 
-/* ---- Contact (alternanță ON, full-width background) ---- */
+/* ---- Contact ---- */
 .contact{
-  position: relative;                 /* pentru pseudo-element */
+  position: relative;
   padding: 28px 0 50px;
   text-align: left;
-  background: transparent;            /* fundalul real îl punem pe ::before */
+  background: transparent;
   border-top: none;
 }
-
-/* banda gri care acoperă 100% din lățimea ferestrei */
 .contact::before{
   content: "";
   position: absolute;
   top: 0; bottom: 0;
-  left: calc(50% - 50vw);             /* întinde de la margine la margine */
+  left: calc(50% - 50vw);
   right: calc(50% - 50vw);
-  background: var(--alt);             /* culoarea de alternanță */
-  z-index: -1;                         /* rămâne în spatele conținutului */
+  background: var(--alt);
+  z-index: -1;
 }
-
 .contact h2{ text-align: center; }
 .contact .help-sub{ text-align: center; }
 
@@ -219,13 +286,12 @@ input, textarea{
 .form-note.success{ color:#0a7a3d; }
 .form-note.error{ color:#b00020; }
 
-/* ---- Footer (alternanță ON + linie separatoare) ---- */
+/* ---- Footer ---- */
 .site-footer {
-  background: var(--alt);              /* culoarea gri deschis */
-  border-top: 1px solid rgba(0, 0, 0, 0.05); /* linie subtilă de separare */
-  box-shadow: inset 0 1px 0 rgba(0,0,0,0.03); /* ușoară umbră interioară pentru profunzime */
+  background: var(--alt);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.03);
 }
-
 .footer-inner {
   height: 70px;
   display: flex;
@@ -235,12 +301,64 @@ input, textarea{
   font-size: 15px;
 }
 
-/* ---- Responsive mici ---- */
+/* ---- Responsive ---- */
 @media (max-width:960px){
   .hero-inner{grid-template-columns:1fr}
   .car-btn.prev{left:2px} .car-btn.next{right:2px}
 }
+
+/* Mobil: logo stânga, hamburger dreapta, meniu dropdown */
 @media (max-width:740px){
-  .nav{display:none}           /* meniu ascuns pe mobil pentru simplitate */
   .hero-title{font-size:32px}
+
+  .header-inner{
+    height:auto;
+    padding:8px 0;
+  }
+
+  .nav{
+    display:none;
+  }
+  .btn-accent{
+    display:none;
+  }
+
+  .hamburger{
+    display:block;
+  }
+
+  .nav-mobile.open{
+    display:flex;
+  }
+}
+
+/* ===== Buton Back to Top ===== */
+#backToTop {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  z-index: 2000;
+}
+#backToTop:hover {
+  background: #e85e1f;
+  transform: translateY(0) scale(1.08);
+}
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }

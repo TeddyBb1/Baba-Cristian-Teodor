@@ -4,171 +4,320 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OutsourceX — Echipă & Domenii</title>
-  <meta name="description" content="Echipa OutsourceX: 32 de specialiști organizați pe 8 domenii — Software, AI & Data, DevOps & Cloud, UI/UX, Marketing & Branding, Embedded & IoT, Cybersecurity, Legal Tech." />
+  <meta name="description" content="Echipa OutsourceX: 50 de specialiști organizați pe 8 domenii — Software, AI & Data, DevOps & Cloud, UI/UX, Marketing & Branding, Embedded & IoT, Cybersecurity, Legal Tech." />
   <link rel="stylesheet" href="echipa.css" />
 </head>
+
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="index.html#acasa">
-        <span class="logo-mark" aria-hidden="true"></span>
-        <span class="logo-text">OutsourceX</span>
-      </a>
-      <nav class="nav" aria-label="Meniu principal">
-        <a href="index.html#acasa">Acasă</a>
-        <a href="servicii.html">Servicii</a>
-        <a href="echipa.html" aria-current="page">Echipă</a>
-      </nav>
-      <a class="btn btn-accent" href="index.html#servicii">Solicită ofertă</a>
-    </div>
-  </header>
+  <!-- Ancoră pentru butonul „Mergi sus” -->
+  <a id="top" tabindex="-1"></a>
 
-  <main class="container page">
-    <h1 class="page-title">Echipa noastră</h1>
-    <p class="page-sub">32 de specialiști grupați pe 8 domenii. Proiecte la cheie și staff augmentation.</p>
+  <!-- Buton „Înapoi sus” -->
+  <button id="backToTop" aria-label="Înapoi sus">↑</button>
 
-    <!-- 1. Software Development (1–4) -->
-    <section class="team-section">
-      <h2 class="team-title">1) Software Development</h2>
-      <p class="team-sub">Site-uri și aplicații personalizate.</p>
-      <div class="grid-4">
-        <article class="devcard">
-          <div class="devcard-dots"><span></span><span></span><span></span></div>
-          <div class="devcard-body">
-            <img src="poze-echipa/1.png" alt="Membru Software Dev 1" class="devcard-avatar" />
-            <h3>Inginer software</h3>
-            <p class="role">Full-stack · 5+ ani</p>
-            <p class="desc">Aplicații web scalabile, UX curat, best practices.</p>
-            <div class="skills"><span>JavaScript</span><span>Node.js</span><span>React</span></div>
-          </div>
-        </article>
-        <article class="devcard">
-          <div class="devcard-dots"><span></span><span></span><span></span></div>
-          <div class="devcard-body">
-            <img src="poze-echipa/2.png" alt="Membru Software Dev 2" class="devcard-avatar" />
-            <h3>Backend engineer</h3>
-            <p class="role">Microservicii · 6+ ani</p>
-            <p class="desc">Arhitecturi REST/GraphQL, observabilitate.</p>
-            <div class="skills"><span>Java</span><span>Spring</span><span>PostgreSQL</span></div>
-          </div>
-        </article>
-        <article class="devcard">
-          <div class="devcard-dots"><span></span><span></span><span></span></div>
-          <div class="devcard-body">
-            <img src="poze-echipa/3.png" alt="Membru Software Dev 3" class="devcard-avatar" />
-            <h3>Frontend engineer</h3>
-            <p class="role">UI performant · 4+ ani</p>
-            <p class="desc">SPA rapide, accesibile, ușor de întreținut.</p>
-            <div class="skills"><span>TypeScript</span><span>Vue</span><span>Vite</span></div>
-          </div>
-        </article>
-        <article class="devcard">
-          <div class="devcard-dots"><span></span><span></span><span></span></div>
-          <div class="devcard-body">
-            <img src="poze-echipa/4.png" alt="Membru Software Dev 4" class="devcard-avatar" />
-            <h3>Mobile developer</h3>
-            <p class="role">iOS/Android · 5+ ani</p>
-            <p class="desc">CI/CD, testare automată, livrări stabile.</p>
-            <div class="skills"><span>Kotlin</span><span>Swift</span><span>Flutter</span></div>
-          </div>
-        </article>
+  <!-- MENIU MOBIL (hamburger dropdown) -->
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Meniu mobil">
+    <a href="index.html#acasa">Acasă</a>
+    <a href="servicii.html">Servicii</a>
+    <a href="echipa.html" aria-current="page">Echipă</a>
+    <a href="index.html#servicii">Solicită ofertă</a>
+  </nav>
+
+  <!-- Layout principal în CSS Grid: header + nav + main + aside + footer -->
+  <div class="page-grid">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html#acasa">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-text">OutsourceX</span>
+        </a>
+
+        <nav class="nav" aria-label="Meniu principal">
+          <a href="index.html#acasa">Acasă</a>
+          <a href="servicii.html">Servicii</a>
+          <a href="echipa.html" aria-current="page">Echipă</a>
+        </nav>
+
+        <a class="btn btn-accent desktop-cta" href="index.html#servicii">Solicită ofertă</a>
+
+        <!-- HAMBURGER SVG (vizibil doar pe ecrane mici) -->
+        <label class="hamburger" aria-label="Deschide meniul">
+          <input type="checkbox">
+          <svg viewBox="0 0 32 32">
+            <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+            <path class="line" d="M7 16 27 16"></path>
+          </svg>
+        </label>
       </div>
-    </section>
+    </header>
 
-    <!-- 2. AI & Data Science (5–8) -->
-    <section class="team-section">
-      <h2 class="team-title">2) AI & Data Science</h2>
-      <p class="team-sub">Analiză inteligentă și automatizare.</p>
-      <div class="grid-4">
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/5.png" alt="AI & Data 1" class="devcard-avatar" /><h3>ML Engineer</h3><p class="role">Prod & MLOps</p><p class="desc">Antrenare și servire modele end-to-end.</p><div class="skills"><span>Python</span><span>PyTorch</span><span>FastAPI</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/6.png" alt="AI & Data 2" class="devcard-avatar" /><h3>Data Scientist</h3><p class="role">NLP · CV</p><p class="desc">Modele pentru text și imagini, evaluare riguroasă.</p><div class="skills"><span>Transformers</span><span>OpenCV</span><span>SQL</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/7.png" alt="AI & Data 3" class="devcard-avatar" /><h3>Data Engineer</h3><p class="role">Pipelines</p><p class="desc">Ingestie, curățare, lacuri de date scalabile.</p><div class="skills"><span>Airflow</span><span>DBT</span><span>Snowflake</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/8.png" alt="AI & Data 4" class="devcard-avatar" /><h3>Applied ML</h3><p class="role">Prod impact</p><p class="desc">A/B testing, metrici, monitorizare drift.</p><div class="skills"><span>Sklearn</span><span>MLflow</span><span>Kafka</span></div></div></article>
+    <!-- NAV LATERAL -->
+    <nav class="side-nav" aria-label="Navigare pe domenii">
+      <h2 class="side-nav-title">Domenii</h2>
+      <ul>
+        <li><a href="#software">1) Software Development</a></li>
+        <li><a href="#ai-data">2) AI &amp; Data Science</a></li>
+        <li><a href="#devops">3) DevOps &amp; Cloud</a></li>
+        <li><a href="#ui-ux">4) UI/UX Design</a></li>
+        <li><a href="#marketing">5) Marketing &amp; Branding</a></li>
+        <li><a href="#embedded">6) Embedded &amp; IoT</a></li>
+        <li><a href="#cyber">7) Cybersecurity</a></li>
+        <li><a href="#legal">8) Legal Tech</a></li>
+      </ul>
+    </nav>
+
+    <!-- CONȚINUT PRINCIPAL -->
+    <main class="page container">
+      <h1 class="page-title">Echipa noastră</h1>
+      <p class="page-sub">50 de specialiști grupați pe 8 domenii. Proiecte la cheie și staff augmentation.</p>
+
+      <!-- 1. Software Development -->
+      <section class="team-section" id="software">
+        <h2 class="team-title">1) Software Development</h2>
+        <p class="team-sub">Site-uri și aplicații personalizate.</p>
+        <div class="grid-4">
+          <article class="devcard">
+            <div class="devcard-dots"><span></span><span></span><span></span></div>
+            <div class="devcard-body">
+              <img src="poze-echipa/1.png" alt="Membru Software Dev 1" class="devcard-avatar" />
+              <h3>Inginer software</h3>
+              <p class="role">Full-stack · 5+ ani</p>
+              <p class="desc">Aplicații web scalabile, UX curat, best practices.</p>
+              <div class="skills"><span>JavaScript</span><span>Node.js</span><span>React</span></div>
+            </div>
+          </article>
+          <article class="devcard">
+            <div class="devcard-dots"><span></span><span></span><span></span></div>
+            <div class="devcard-body">
+              <img src="poze-echipa/2.png" alt="Membru Software Dev 2" class="devcard-avatar" />
+              <h3>Backend engineer</h3>
+              <p class="role">Microservicii · 6+ ani</p>
+              <p class="desc">Arhitecturi REST/GraphQL, observabilitate.</p>
+              <div class="skills"><span>Java</span><span>Spring</span><span>PostgreSQL</span></div>
+            </div>
+          </article>
+          <article class="devcard">
+            <div class="devcard-dots"><span></span><span></span><span></span></div>
+            <div class="devcard-body">
+              <img src="poze-echipa/3.png" alt="Membru Software Dev 3" class="devcard-avatar" />
+              <h3>Frontend engineer</h3>
+              <p class="role">UI performant · 4+ ani</p>
+              <p class="desc">SPA rapide, accesibile, ușor de întreținut.</p>
+              <div class="skills"><span>TypeScript</span><span>Vue</span><span>Vite</span></div>
+            </div>
+          </article>
+          <article class="devcard">
+            <div class="devcard-dots"><span></span><span></span><span></span></div>
+            <div class="devcard-body">
+              <img src="poze-echipa/4.png" alt="Membru Software Dev 4" class="devcard-avatar" />
+              <h3>Mobile developer</h3>
+              <p class="role">iOS/Android · 5+ ani</p>
+              <p class="desc">CI/CD, testare automată, livrări stabile.</p>
+              <div class="skills"><span>Kotlin</span><span>Swift</span><span>Flutter</span></div>
+            </div>
+          </article>
+
+          <!-- extra 3 membri Software -->
+          <article class="devcard">
+            <div class="devcard-dots"><span></span><span></span><span></span></div>
+            <div class="devcard-body">
+              <img src="poze-echipa/33.png" alt="Tech Lead Software" class="devcard-avatar" />
+              <h3>Tech Lead</h3>
+              <p class="role">Arhitectură · 8+ ani</p>
+              <p class="desc">Coordonează echipe full-stack și decizii tehnice.</p>
+              <div class="skills"><span>DDD</span><span>Clean Arch</span><span>Review</span></div>
+            </div>
+          </article>
+          <article class="devcard">
+            <div class="devcard-dots"><span></span><span></span><span></span></div>
+            <div class="devcard-body">
+              <img src="poze-echipa/34.png" alt="QA Engineer" class="devcard-avatar" />
+              <h3>QA Engineer</h3>
+              <p class="role">Testare · 4+ ani</p>
+              <p class="desc">Teste automate, regresie, calitate end-to-end.</p>
+              <div class="skills"><span>Cypress</span><span>Postman</span><span>JUnit</span></div>
+            </div>
+          </article>
+          <article class="devcard">
+            <div class="devcard-dots"><span></span><span></span><span></span></div>
+            <div class="devcard-body">
+              <img src="poze-echipa/35.png" alt="Solution Architect" class="devcard-avatar" />
+              <h3>Solution Architect</h3>
+              <p class="role">Enterprise · 10+ ani</p>
+              <p class="desc">Definește arhitecturi pentru produse complexe.</p>
+              <div class="skills"><span>Microservices</span><span>Scalability</span><span>Security</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 2. AI & Data Science -->
+      <section class="team-section" id="ai-data">
+        <h2 class="team-title">2) AI &amp; Data Science</h2>
+        <p class="team-sub">Analiză inteligentă și automatizare.</p>
+        <div class="grid-4">
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/5.png" alt="AI &amp; Data 1" class="devcard-avatar" /><h3>ML Engineer</h3><p class="role">Prod &amp; MLOps</p><p class="desc">Antrenare și servire modele end-to-end.</p><div class="skills"><span>Python</span><span>PyTorch</span><span>FastAPI</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/6.png" alt="AI &amp; Data 2" class="devcard-avatar" /><h3>Data Scientist</h3><p class="role">NLP · CV</p><p class="desc">Modele pentru text și imagini, evaluare riguroasă.</p><div class="skills"><span>Transformers</span><span>OpenCV</span><span>SQL</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/7.png" alt="AI &amp; Data 3" class="devcard-avatar" /><h3>Data Engineer</h3><p class="role">Pipelines</p><p class="desc">Ingestie, curățare, lacuri de date scalabile.</p><div class="skills"><span>Airflow</span><span>DBT</span><span>Snowflake</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/8.png" alt="AI &amp; Data 4" class="devcard-avatar" /><h3>Applied ML</h3><p class="role">Prod impact</p><p class="desc">A/B testing, metrici, monitorizare drift.</p><div class="skills"><span>Sklearn</span><span>MLflow</span><span>Kafka</span></div></div></article>
+
+          <!-- extra 2 membri AI -->
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/36.png" alt="AI Researcher" class="devcard-avatar" /><h3>AI Researcher</h3><p class="role">Modele noi</p><p class="desc">Experimente cu arhitecturi și tehnici moderne.</p><div class="skills"><span>LLM</span><span>RLHF</span><span>Papers</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/37.png" alt="BI Analyst" class="devcard-avatar" /><h3>BI Analyst</h3><p class="role">Dashboarding</p><p class="desc">Transformă datele în insight-uri vizuale.</p><div class="skills"><span>Power BI</span><span>Looker</span><span>SQL</span></div></div></article>
+        </div>
+      </section>
+
+      <!-- 3. DevOps & Cloud -->
+      <section class="team-section" id="devops">
+        <h2 class="team-title">3) DevOps &amp; Cloud</h2>
+        <p class="team-sub">Infrastructură scalabilă și sigură.</p>
+        <div class="grid-4">
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/9.png" alt="DevOps 1" class="devcard-avatar" /><h3>Cloud Engineer</h3><p class="role">AWS · Azure</p><p class="desc">Infra scalabilă, cost control.</p><div class="skills"><span>Terraform</span><span>EKS</span><span>CDK</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/10.png" alt="DevOps 2" class="devcard-avatar" /><h3>Platform Engineer</h3><p class="role">K8s · CI/CD</p><p class="desc">Observability, securitate, self-service.</p><div class="skills"><span>ArgoCD</span><span>Prometheus</span><span>Grafana</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/11.png" alt="DevOps 3" class="devcard-avatar" /><h3>Site Reliability</h3><p class="role">SLA · SLO</p><p class="desc">Fiabilitate și răspuns la incidente.</p><div class="skills"><span>SLI/SLO</span><span>On-call</span><span>Runbooks</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/12.png" alt="DevOps 4" class="devcard-avatar" /><h3>SecDevOps</h3><p class="role">Hardening</p><p class="desc">Pipeline securizat, scanări automate.</p><div class="skills"><span>OWASP</span><span>Trivy</span><span>Vault</span></div></div></article>
+
+          <!-- extra 3 membri DevOps -->
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/38.png" alt="Infra Architect" class="devcard-avatar" /><h3>Infra Architect</h3><p class="role">Cloud design</p><p class="desc">Definește topologii sigure și eficiente.</p><div class="skills"><span>VPC</span><span>Zero Trust</span><span>Multi-region</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/39.png" alt="CI Engineer" class="devcard-avatar" /><h3>CI Engineer</h3><p class="role">Automation</p><p class="desc">Optimizează pipeline-urile de build &amp; test.</p><div class="skills"><span>GitHub Actions</span><span>Jenkins</span><span>Docker</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/40.png" alt="Observability Engineer" class="devcard-avatar" /><h3>Observability Eng.</h3><p class="role">Telemetrie</p><p class="desc">Loguri, metrici și alerte centralizate.</p><div class="skills"><span>OpenTelemetry</span><span>Loki</span><span>Tempo</span></div></div></article>
+        </div>
+      </section>
+
+      <!-- 4. UI/UX Design -->
+      <section class="team-section" id="ui-ux">
+        <h2 class="team-title">4) UI/UX Design</h2>
+        <p class="team-sub">Experiență digitală premium.</p>
+        <div class="grid-4">
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/13.png" alt="UI/UX 1" class="devcard-avatar" /><h3>Product Designer</h3><p class="role">Research · Flows</p><p class="desc">De la idee la prototip validat.</p><div class="skills"><span>Figma</span><span>UX</span><span>Design System</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/14.png" alt="UI/UX 2" class="devcard-avatar" /><h3>UI Designer</h3><p class="role">Branding · UI</p><p class="desc">Interfețe curate, accesibile.</p><div class="skills"><span>Figma</span><span>Tokens</span><span>WCAG</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/15.png" alt="UI/UX 3" class="devcard-avatar" /><h3>Prototyper</h3><p class="role">Interacțiuni</p><p class="desc">Micro-interacțiuni, testare utilizatori.</p><div class="skills"><span>FigJam</span><span>Proto</span><span>Usability</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/16.png" alt="UI/UX 4" class="devcard-avatar" /><h3>Content Designer</h3><p class="role">UX Writing</p><p class="desc">Mesaje clare care convertesc.</p><div class="skills"><span>UX Writing</span><span>IA</span><span>Localization</span></div></div></article>
+
+          <!-- extra 2 membri UI/UX -->
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/41.png" alt="Design Ops" class="devcard-avatar" /><h3>Design Ops</h3><p class="role">Procese</p><p class="desc">Aliniază designul cu echipele de produs.</p><div class="skills"><span>Design tokens</span><span>Guidelines</span><span>Docs</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/42.png" alt="UX Researcher" class="devcard-avatar" /><h3>UX Researcher</h3><p class="role">User insight</p><p class="desc">Interviuri, teste, studii pentru decizii bune.</p><div class="skills"><span>Interviews</span><span>Surveys</span><span>Analysis</span></div></div></article>
+        </div>
+      </section>
+
+      <!-- 5. Marketing & Branding -->
+      <section class="team-section" id="marketing">
+        <h2 class="team-title">5) Marketing &amp; Branding</h2>
+        <p class="team-sub">Creștere și vizibilitate online.</p>
+        <div class="grid-4">
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/17.png" alt="Marketing 1" class="devcard-avatar" /><h3>Growth Marketer</h3><p class="role">Paid &amp; SEO</p><p class="desc">Campanii data-driven, măsurabile.</p><div class="skills"><span>SEO</span><span>GA4</span><span>Ads</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/18.png" alt="Marketing 2" class="devcard-avatar" /><h3>Brand Designer</h3><p class="role">Identitate</p><p class="desc">Sisteme vizuale coerente.</p><div class="skills"><span>Brand</span><span>Motion</span><span>Web</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/19.png" alt="Marketing 3" class="devcard-avatar" /><h3>Content Strategist</h3><p class="role">Storytelling</p><p class="desc">Conținut care educă și convertește.</p><div class="skills"><span>Copy</span><span>CRM</span><span>Lifecycle</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/20.png" alt="Marketing 4" class="devcard-avatar" /><h3>Social Media</h3><p class="role">Community</p><p class="desc">Campanii multi-canal și analytics.</p><div class="skills"><span>Planning</span><span>KPIs</span><span>Creatives</span></div></div></article>
+
+          <!-- extra 2 membri Marketing -->
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/43.png" alt="SEO Specialist" class="devcard-avatar" /><h3>SEO Specialist</h3><p class="role">Organic</p><p class="desc">Optimizare tehnică și de conținut.</p><div class="skills"><span>On-page</span><span>Technical SEO</span><span>Backlinks</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/44.png" alt="Performance Marketer" class="devcard-avatar" /><h3>Performance Marketer</h3><p class="role">Paid media</p><p class="desc">Scalează campanii profitabile.</p><div class="skills"><span>Meta Ads</span><span>Google Ads</span><span>ROAS</span></div></div></article>
+        </div>
+      </section>
+
+      <!-- 6. Embedded & IoT -->
+      <section class="team-section" id="embedded">
+        <h2 class="team-title">6) Embedded &amp; IoT</h2>
+        <p class="team-sub">Soluții hardware inteligente.</p>
+        <div class="grid-4">
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/21.png" alt="Embedded 1" class="devcard-avatar" /><h3>Embedded Engineer</h3><p class="role">RTOS · Drivers</p><p class="desc">Firmware fiabil pentru dispozitive conectate.</p><div class="skills"><span>C</span><span>C++</span><span>FreeRTOS</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/22.png" alt="Embedded 2" class="devcard-avatar" /><h3>IoT Engineer</h3><p class="role">Edge · Cloud</p><p class="desc">De la senzori la cloud, end-to-end.</p><div class="skills"><span>MQTT</span><span>ESP32</span><span>AWS IoT</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/23.png" alt="Embedded 3" class="devcard-avatar" /><h3>Electronics</h3><p class="role">Schematics</p><p class="desc">Proiectare PCB, validare și test.</p><div class="skills"><span>KiCad</span><span>SPI/I2C</span><span>UART</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/24.png" alt="Embedded 4" class="devcard-avatar" /><h3>Edge AI</h3><p class="role">Vision</p><p class="desc">Modele optimizate pe dispozitive.</p><div class="skills"><span>ONNX</span><span>TFLite</span><span>OpenCV</span></div></div></article>
+
+          <!-- extra 2 membri Embedded -->
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/45.png" alt="Hardware Engineer" class="devcard-avatar" /><h3>Hardware Engineer</h3><p class="role">Prototipare</p><p class="desc">De la schemă la produs testat în teren.</p><div class="skills"><span>PCB</span><span>EMC</span><span>Testing</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/46.png" alt="Firmware Engineer" class="devcard-avatar" /><h3>Firmware Engineer</h3><p class="role">Low-level</p><p class="desc">Optimizare memorie și consum de energie.</p><div class="skills"><span>C</span><span>RTOS</span><span>Bootloaders</span></div></div></article>
+        </div>
+      </section>
+
+      <!-- 7. Cybersecurity -->
+      <section class="team-section" id="cyber">
+        <h2 class="team-title">7) Cybersecurity</h2>
+        <p class="team-sub">Securitate și audit complet.</p>
+        <div class="grid-4">
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/25.png" alt="Cyber 1" class="devcard-avatar" /><h3>AppSec Engineer</h3><p class="role">SDLC securizat</p><p class="desc">Testare și remediere vulnerabilități.</p><div class="skills"><span>OWASP</span><span>SAST</span><span>DAST</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/26.png" alt="Cyber 2" class="devcard-avatar" /><h3>Blue Team</h3><p class="role">Defense</p><p class="desc">Monitorizare, SIEM, răspuns la incidente.</p><div class="skills"><span>Splunk</span><span>EDR</span><span>MITRE</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/27.png" alt="Cyber 3" class="devcard-avatar" /><h3>Pen-Tester</h3><p class="role">Red Team</p><p class="desc">Teste de intruziune și rapoarte clare.</p><div class="skills"><span>Burp</span><span>Nmap</span><span>Kali</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/28.png" alt="Cyber 4" class="devcard-avatar" /><h3>GRC Specialist</h3><p class="role">Compliance</p><p class="desc">Politici, procese, audit.</p><div class="skills"><span>ISO27001</span><span>GDPR</span><span>Risk</span></div></div></article>
+
+          <!-- extra 2 membri Cyber -->
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/47.png" alt="SOC Analyst" class="devcard-avatar" /><h3>SOC Analyst</h3><p class="role">Monitoring</p><p class="desc">Supraveghează alertele și incidentele.</p><div class="skills"><span>SIEM</span><span>Playbooks</span><span>IR</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/48.png" alt="Security Engineer" class="devcard-avatar" /><h3>Security Engineer</h3><p class="role">Hardening</p><p class="desc">Implementează controale și politici de securitate.</p><div class="skills"><span>IAM</span><span>PKI</span><span>Zero Trust</span></div></div></article>
+        </div>
+      </section>
+
+      <!-- 8. Legal Tech -->
+      <section class="team-section" id="legal">
+        <h2 class="team-title">8) Legal Tech</h2>
+        <p class="team-sub">Inovație juridică asistată de AI.</p>
+        <div class="grid-4">
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/29.png" alt="Legal Tech 1" class="devcard-avatar" /><h3>Legal Engineer</h3><p class="role">Doc automation</p><p class="desc">Sisteme de generare/validare documente.</p><div class="skills"><span>Python</span><span>NLP</span><span>Regex</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/30.png" alt="Legal Tech 2" class="devcard-avatar" /><h3>Compliance Tech</h3><p class="role">Policy</p><p class="desc">Fluxuri aprobări, trasabilitate.</p><div class="skills"><span>Workflows</span><span>Audit</span><span>Dashboards</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/31.png" alt="Legal Tech 3" class="devcard-avatar" /><h3>AI Paralegal</h3><p class="role">RAG</p><p class="desc">Căutare asistată pe legislație.</p><div class="skills"><span>Vector DB</span><span>RAG</span><span>LLM</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/32.png" alt="Legal Tech 4" class="devcard-avatar" /><h3>Product Owner</h3><p class="role">Legal apps</p><p class="desc">Roadmap, prioritizare, livrare.</p><div class="skills"><span>Agile</span><span>SOW</span><span>Roadmap</span></div></div></article>
+
+          <!-- extra 2 membri Legal -->
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/49.png" alt="Legal Analyst" class="devcard-avatar" /><h3>Legal Analyst</h3><p class="role">Analiză</p><p class="desc">Mapează cerințele legale în specificații tech.</p><div class="skills"><span>Contracte</span><span>GDPR</span><span>Risk</span></div></div></article>
+          <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/50.png" alt="Knowledge Manager" class="devcard-avatar" /><h3>Knowledge Manager</h3><p class="role">Bază de cunoștințe</p><p class="desc">Organizează legislația și jurisprudența pentru AI.</p><div class="skills"><span>Taxonomy</span><span>Docs</span><span>Retrieval</span></div></div></article>
+        </div>
+      </section>
+
+      <div class="cta-row">
+        <a class="btn" href="index.html#servicii">Vezi serviciile</a>
       </div>
-    </section>
+    </main>
 
-    <!-- 3. DevOps & Cloud (9–12) -->
-    <section class="team-section">
-      <h2 class="team-title">3) DevOps & Cloud</h2>
-      <p class="team-sub">Infrastructură scalabilă și sigură.</p>
-      <div class="grid-4">
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/9.png" alt="DevOps 1" class="devcard-avatar" /><h3>Cloud Engineer</h3><p class="role">AWS · Azure</p><p class="desc">Infra scalabilă, cost control.</p><div class="skills"><span>Terraform</span><span>EKS</span><span>CDK</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/10.png" alt="DevOps 2" class="devcard-avatar" /><h3>Platform Engineer</h3><p class="role">K8s · CI/CD</p><p class="desc">Observability, securitate, self-service.</p><div class="skills"><span>ArgoCD</span><span>Prometheus</span><span>Grafana</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/11.png" alt="DevOps 3" class="devcard-avatar" /><h3>Site Reliability</h3><p class="role">SLA · SLO</p><p class="desc">Fiabilitate și răspuns la incidente.</p><div class="skills"><span>SLI/SLO</span><span>On-call</span><span>Runbooks</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/12.png" alt="DevOps 4" class="devcard-avatar" /><h3>SecDevOps</h3><p class="role">Hardening</p><p class="desc">Pipeline securizat, scanări automate.</p><div class="skills"><span>OWASP</span><span>Trivy</span><span>Vault</span></div></div></article>
+    <!-- ASIDE -->
+    <aside class="page-aside"></aside>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <small>© 2025 OutsourceX. Toate drepturile rezervate.</small>
       </div>
-    </section>
+    </footer>
 
-    <!-- 4. UI/UX Design (13–16) -->
-    <section class="team-section">
-      <h2 class="team-title">4) UI/UX Design</h2>
-      <p class="team-sub">Experiență digitală premium.</p>
-      <div class="grid-4">
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/13.png" alt="UI/UX 1" class="devcard-avatar" /><h3>Product Designer</h3><p class="role">Research · Flows</p><p class="desc">De la idee la prototip validat.</p><div class="skills"><span>Figma</span><span>UX</span><span>Design System</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/14.png" alt="UI/UX 2" class="devcard-avatar" /><h3>UI Designer</h3><p class="role">Branding · UI</p><p class="desc">Interfețe curate, accesibile.</p><div class="skills"><span>Figma</span><span>Tokens</span><span>WCAG</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/15.png" alt="UI/UX 3" class="devcard-avatar" /><h3>Prototyper</h3><p class="role">Interacțiuni</p><p class="desc">Micro-interacțiuni, testare utilizatori.</p><div class="skills"><span>FigJam</span><span>Proto</span><span>Usability</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/16.png" alt="UI/UX 4" class="devcard-avatar" /><h3>Content Designer</h3><p class="role">UX Writing</p><p class="desc">Mesaje clare care convertesc.</p><div class="skills"><span>UX Writing</span><span>IA</span><span>Localization</span></div></div></article>
-      </div>
-    </section>
+  </div><!-- /.page-grid -->
 
-    <!-- 5. Marketing & Branding (17–20) -->
-    <section class="team-section">
-      <h2 class="team-title">5) Marketing & Branding</h2>
-      <p class="team-sub">Creștere și vizibilitate online.</p>
-      <div class="grid-4">
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/17.png" alt="Marketing 1" class="devcard-avatar" /><h3>Growth Marketer</h3><p class="role">Paid & SEO</p><p class="desc">Campanii data-driven, măsurabile.</p><div class="skills"><span>SEO</span><span>GA4</span><span>Ads</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/18.png" alt="Marketing 2" class="devcard-avatar" /><h3>Brand Designer</h3><p class="role">Identitate</p><p class="desc">Sisteme vizuale coerente.</p><div class="skills"><span>Brand</span><span>Motion</span><span>Web</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/19.png" alt="Marketing 3" class="devcard-avatar" /><h3>Content Strategist</h3><p class="role">Storytelling</p><p class="desc">Conținut care educă și convertește.</p><div class="skills"><span>Copy</span><span>CRM</span><span>Lifecycle</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/20.png" alt="Marketing 4" class="devcard-avatar" /><h3>Social Media</h3><p class="role">Community</p><p class="desc">Campanii multi-canal și analytics.</p><div class="skills"><span>Planning</span><span>KPIs</span><span>Creatives</span></div></div></article>
-      </div>
-    </section>
+  <!-- Script pentru butonul Back to Top + hamburger -->
+  <script>
+    // Back to top
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (document.documentElement.scrollTop > 300) {
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+    });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-    <!-- 6. Embedded & IoT (21–24) -->
-    <section class="team-section">
-      <h2 class="team-title">6) Embedded & IoT</h2>
-      <p class="team-sub">Soluții hardware inteligente.</p>
-      <div class="grid-4">
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/21.png" alt="Embedded 1" class="devcard-avatar" /><h3>Embedded Engineer</h3><p class="role">RTOS · Drivers</p><p class="desc">Firmware fiabil pentru dispozitive conectate.</p><div class="skills"><span>C</span><span>C++</span><span>FreeRTOS</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/22.png" alt="Embedded 2" class="devcard-avatar" /><h3>IoT Engineer</h3><p class="role">Edge · Cloud</p><p class="desc">De la senzori la cloud, end-to-end.</p><div class="skills"><span>MQTT</span><span>ESP32</span><span>AWS IoT</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/23.png" alt="Embedded 3" class="devcard-avatar" /><h3>Electronics</h3><p class="role">Schematics</p><p class="desc">Proiectare PCB, validare și test.</p><div class="skills"><span>KiCad</span><span>SPI/I2C</span><span>UART</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/24.png" alt="Embedded 4" class="devcard-avatar" /><h3>Edge AI</h3><p class="role">Vision</p><p class="desc">Modele optimizate pe dispozitive.</p><div class="skills"><span>ONNX</span><span>TFLite</span><span>OpenCV</span></div></div></article>
-      </div>
-    </section>
+    // Hamburger menu (checkbox din .hamburger)
+    const burgerInput = document.querySelector('.hamburger input');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-    <!-- 7. Cybersecurity (25–28) -->
-    <section class="team-section">
-      <h2 class="team-title">7) Cybersecurity</h2>
-      <p class="team-sub">Securitate și audit complet.</p>
-      <div class="grid-4">
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/25.png" alt="Cyber 1" class="devcard-avatar" /><h3>AppSec Engineer</h3><p class="role">SDLC securizat</p><p class="desc">Testare și remediere vulnerabilități.</p><div class="skills"><span>OWASP</span><span>SAST</span><span>DAST</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/26.png" alt="Cyber 2" class="devcard-avatar" /><h3>Blue Team</h3><p class="role">Defense</p><p class="desc">Monitorizare, SIEM, răspuns la incidente.</p><div class="skills"><span>Splunk</span><span>EDR</span><span>MITRE</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/27.png" alt="Cyber 3" class="devcard-avatar" /><h3>Pen-Tester</h3><p class="role">Red Team</p><p class="desc">Teste de intruziune și rapoarte clare.</p><div class="skills"><span>Burp</span><span>Nmap</span><span>Kali</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/28.png" alt="Cyber 4" class="devcard-avatar" /><h3>GRC Specialist</h3><p class="role">Compliance</p><p class="desc">Politici, procese, audit.</p><div class="skills"><span>ISO27001</span><span>GDPR</span><span>Risk</span></div></div></article>
-      </div>
-    </section>
+    if (burgerInput) {
+      burgerInput.addEventListener('change', () => {
+        const isOpen = burgerInput.checked;
+        mobileMenu.classList.toggle('open', isOpen);
+        document.body.classList.toggle('no-scroll', isOpen);
+      });
 
-    <!-- 8. Legal Tech (29–32) -->
-    <section class="team-section">
-      <h2 class="team-title">8) Legal Tech</h2>
-      <p class="team-sub">Inovație juridică asistată de AI.</p>
-      <div class="grid-4">
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/29.png" alt="Legal Tech 1" class="devcard-avatar" /><h3>Legal Engineer</h3><p class="role">Doc automation</p><p class="desc">Sisteme de generare/validare documente.</p><div class="skills"><span>Python</span><span>NLP</span><span>Regex</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/30.png" alt="Legal Tech 2" class="devcard-avatar" /><h3>Compliance Tech</h3><p class="role">Policy</p><p class="desc">Fluxuri aprobări, trasabilitate.</p><div class="skills"><span>Workflows</span><span>Audit</span><span>Dashboards</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/31.png" alt="Legal Tech 3" class="devcard-avatar" /><h3>AI Paralegal</h3><p class="role">RAG</p><p class="desc">Căutare asistată pe legislație.</p><div class="skills"><span>Vector DB</span><span>RAG</span><span>LLM</span></div></div></article>
-        <article class="devcard"><div class="devcard-dots"><span></span><span></span><span></span></div><div class="devcard-body"><img src="poze-echipa/32.png" alt="Legal Tech 4" class="devcard-avatar" /><h3>Product Owner</h3><p class="role">Legal apps</p><p class="desc">Roadmap, prioritizare, livrare.</p><div class="skills"><span>Agile</span><span>SOW</span><span>Roadmap</span></div></div></article>
-      </div>
-    </section>
-
-    <div class="cta-row">
-      <a class="btn" href="index.html#servicii">Vezi serviciile</a>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <small>© 2025 OutsourceX. Toate drepturile rezervate.</small>
-    </div>
-  </footer>
+      // Închide meniul când se apasă pe un link
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+          burgerInput.checked = false;
+          mobileMenu.classList.remove('open');
+          document.body.classList.remove('no-scroll');
+        }
+      });
+    }
+  </script>
 </body>
 </html>

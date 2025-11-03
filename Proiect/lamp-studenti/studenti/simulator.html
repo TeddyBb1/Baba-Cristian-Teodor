@@ -1,520 +1,345 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Simulator preț — OutsourceX</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="simulator.css?v=2" />
+  <title>Simulează costul proiectului — OutsourceX</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="simulator.css">
 </head>
-<body>
 
+<!-- Buton „Înapoi sus” -->
+<button id="backToTop" aria-label="Înapoi sus">↑</button>
+
+<script>
+  const btn = document.getElementById('backToTop');
+
+  // afișează butonul după 300px scroll
+  window.addEventListener('scroll', () => {
+    if (document.documentElement.scrollTop > 300) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  });
+
+  // scroll lin către top
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<body>
 <header class="site-header">
   <div class="container header-inner">
     <a class="logo" href="index.html">
-      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-mark"></span>
       <span class="logo-text">OutsourceX</span>
     </a>
-    <nav class="nav" aria-label="Meniu principal">
+    <nav class="nav">
       <a href="index.html">Acasă</a>
       <a href="servicii.html">Servicii</a>
       <a href="echipa.html">Echipă</a>
     </nav>
-    <a class="btn btn-accent" href="index.html#contact">Contact</a>
+    <a class="btn btn-accent" href="#contact">Contact</a>
   </div>
 </header>
 
 <main>
   <!-- HERO -->
   <section class="hero hero--sim">
-    <div class="container hero-inner center">
+    <div class="hero-inner">
       <h1 class="hero-title">Simulează costul proiectului</h1>
-      <p class="hero-sub">Alege tipul de proiect, compoziția echipei și durata ori <strong>setează un deadline</strong>. Primești instant o estimare orientativă.</p>
+      <p class="hero-sub">Alege domeniul, echipa și durata. Estimare actualizată automat.</p>
     </div>
   </section>
 
-  <!-- GRID principal -->
+  <!-- GRID PRINCIPAL -->
   <section class="sim-grid">
     <div class="container sim-inner">
 
-      <!-- CONFIGURATOR -->
-      <form id="simForm" class="sim-form" onsubmit="return false" aria-labelledby="simTitle">
+      <!-- CARD FORMULAR -->
+      <div class="card sim-form">
 
-        <!-- Pas 1 -->
-        <div class="card">
-          <h2 id="simTitle">1) Tipul proiectului</h2>
-
-          <div class="proj-types">
-            <label class="type-card">
-              <input type="radio" name="ptype" value="augment" checked />
-              <div>
-                <strong>Staff Augmentation</strong>
-                <p class="muted">Suplimentezi echipa cu rolurile necesare.</p>
-              </div>
-            </label>
-            <label class="type-card">
-              <input type="radio" name="ptype" value="fixed" />
-              <div>
-                <strong>Proiect la cheie</strong>
-                <p class="muted">Livrare end-to-end cu milestone-uri clare.</p>
-              </div>
-            </label>
-            <label class="type-card">
-              <input type="radio" name="ptype" value="mixed" />
-              <div>
-                <strong>Echipă mixtă</strong>
-                <p class="muted">Nucleu dedicat + sprijin pe specializări.</p>
-              </div>
-            </label>
+        <h2>1) Date proiect</h2>
+        <div class="row">
+          <div class="field">
+            <span>Dată start</span>
+            <input type="date" id="startDate">
           </div>
 
-          <div class="row">
-            <label class="field">
-              <span>Dată start</span>
-              <input type="date" id="startDate" />
-            </label>
+          <div class="field">
+            <span>Deadline</span>
+            <input type="date" id="endDate">
+          </div>
 
-            <label class="field">
-              <span>Deadline</span>
-              <input type="date" id="deadline" />
-            </label>
+          <div class="field">
+            <span>Complexitate</span>
+            <select id="complexity">
+              <option value="1.0">Standard</option>
+              <option value="1.15">Mediu</option>
+              <option value="1.35">Avansat</option>
+            </select>
+          </div>
 
-            <label class="field">
-              <span>Durată (luni)</span>
-              <input type="number" id="duration" min="1" max="36" value="6" />
-            </label>
-
-            <label class="field">
-              <span>Complexitate</span>
-              <select id="complexity">
-                <option value="1">Basic (×1.00)</option>
-                <option value="1.15" selected>Standard (×1.15)</option>
-                <option value="1.3">Avansat (×1.30)</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span>Monedă</span>
-              <select id="currency">
-                <option value="EUR" selected>EUR</option>
-                <option value="USD">USD</option>
-                <option value="RON">RON</option>
-              </select>
-            </label>
+          <div class="field">
+            <span>Monedă</span>
+            <select id="currency">
+              <option value="EUR">EUR €</option>
+              <option value="USD">USD $</option>
+            </select>
           </div>
         </div>
 
-        <!-- Pas 2 -->
-        <div class="card">
-          <h2>2) Compoziția echipei</h2>
-          <p class="muted">Selectează <strong>oameni reali</strong> din echipa noastră sau ajustează manual orele/săptămână. Când există selecții pe rol, cantitatea este setată automat la numărul de persoane alese.</p>
+        <h2 style="margin-top:20px;">2) Compoziția echipei</h2>
+        <p class="small">Selectează persoane reale pentru proiect:</p>
 
-          <div class="team-table">
-            <div class="thead">
-              <div>Rol</div><div>Tarif (€/h)</div><div>Nr.</div><div>Ore/săpt</div><div>Selectează</div><div>Cost lunar</div>
-            </div>
-            <div class="tbody" id="teamBody"><!-- JS inject --></div>
-          </div>
+        <button class="btn" id="selectTeamBtn">Selectează echipa</button>
 
-          <details class="custom-role">
-            <summary>Adaugă rol personalizat</summary>
-            <div class="row">
-              <label class="field">
-                <span>Nume rol</span>
-                <input type="text" id="crName" placeholder="Ex: Data Engineer" />
-              </label>
-              <label class="field">
-                <span>Tarif (€/h)</span>
-                <input type="number" id="crRate" min="10" max="300" step="1" value="50" />
-              </label>
-              <button class="btn btn-ghost" id="addCustomRole" type="button">Adaugă rol</button>
-            </div>
-          </details>
+        <div id="selectedTeam" class="chips"></div>
+
+        <h2 style="margin-top:20px;">3) Extra opțiuni</h2>
+        <div class="extras">
+          <label><input type="checkbox" class="extraOpt" value="0.05"> QA Automation (+5%)</label>
+          <label><input type="checkbox" class="extraOpt" value="0.07"> Observability (+7%)</label>
+          <label><input type="checkbox" class="extraOpt" value="0.03"> Security Hardening (+3%)</label>
+          <label><input type="checkbox" class="extraOpt" value="0.02"> Post-launch Support (+2%)</label>
         </div>
 
-        <!-- Pas 3 -->
-        <div class="card">
-          <h2>3) Extra opțiuni</h2>
-          <div class="extras">
-            <label><input type="checkbox" class="extra" data-uplift="0.05" checked /> QA Automation (+5%)</label>
-            <label><input type="checkbox" class="extra" data-uplift="0.07" /> DevOps & Observability (+7%)</label>
-            <label><input type="checkbox" class="extra" data-uplift="0.03" /> Securitate & hardening (+3%)</label>
-            <label><input type="checkbox" class="extra" data-uplift="0.02" /> Suport post-lansare (+2%)</label>
-          </div>
-          <p class="muted small">* Uplifturile se aplică la costul lunar pentru a acoperi tooling, pipeline-uri și overhead.</p>
-        </div>
+      </div>
 
-        <!-- CTA -->
-        <div class="card">
-          <div class="row end">
-            <a class="btn" href="#summary">Vezi estimarea</a>
-            <a class="btn btn-accent" href="index.html#contact">Trimite cerere</a>
-          </div>
-        </div>
-      </form>
-
-      <!-- SUMAR -->
-      <aside id="summary" class="summary card">
+      <!-- CARD SUMAR -->
+      <div class="card summary">
         <div class="sum-head">
-          <h2>Estimare</h2>
-          <select id="summaryCurrency" aria-label="Monedă sumar">
-            <option value="EUR" selected>EUR</option>
-            <option value="USD">USD</option>
-            <option value="RON">RON</option>
+          <strong>Estimare</strong>
+          <select id="currencyUI">
+            <option value="EUR">EUR €</option>
+            <option value="USD">USD $</option>
           </select>
         </div>
 
         <div class="sum-kpis">
-          <div>
-            <small>Cost lunar</small>
-            <div class="big" id="kpiMonthly">€ 0</div>
-          </div>
-          <div>
-            <small>Durată</small>
-            <div class="big"><span id="kpiMonths">0</span> luni</div>
-          </div>
-          <div>
-            <small>Total proiect</small>
-            <div class="big" id="kpiTotal">€ 0</div>
-          </div>
+          <div><span class="big" id="kpiCostLunar">€0</span><div class="small">Cost lunar</div></div>
+          <div><span class="big" id="kpiLuni">0</span><div class="small">Luni</div></div>
+          <div><span class="big" id="kpiTotal">€0</span><div class="small">Total proiect</div></div>
         </div>
 
-        <hr />
+        <hr>
 
-        <div class="sum-break">
-          <h3>Defalcare</h3>
-          <div id="breakdown"><!-- JS inject --></div>
-        </div>
+        <div class="sum-break" id="costBreakdown"></div>
 
-        <hr />
-        <p class="muted small">
-          * Estimare orientativă bazată pe <strong>160h/lună/persoană</strong> (normă întreagă). Tarifele pot varia în funcție de senioritate, disponibilitate și tipul de contract.
-        </p>
-        <a class="btn btn-accent full" href="index.html#contact">Solicită ofertă detaliată</a>
-      </aside>
+        <button class="btn full">Soliită ofertă completă</button>
+      </div>
+
     </div>
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <small>© <span id="y"></span> OutsourceX. Toate drepturile rezervate.</small>
-  </div>
-</footer>
-
-<!-- === Selector persoane (modal) === -->
-<div id="pickerBackdrop" class="picker-backdrop" hidden>
+<!-- ✅ PERSON PICKER MODAL -->
+<div class="picker-backdrop" id="picker" hidden>
   <div class="picker">
     <div class="picker-head">
-      <h3>Alege persoane pentru rol: <span id="pickerRoleName">—</span></h3>
-      <button type="button" class="picker-close" id="pickerClose">✕</button>
+      <strong>Selectează membrii echipei</strong>
+      <button class="picker-close" id="closePicker">×</button>
     </div>
-    <div class="picker-body">
-      <div class="picker-grid" id="pickerGrid"><!-- JS inject --></div>
-    </div>
+
+    <div class="picker-body" id="pickerBody"></div>
+
     <div class="picker-foot">
-      <button type="button" class="btn btn-ghost" id="pickerCancel">Anulează</button>
-      <button type="button" class="btn" id="pickerSave">Salvează selecția</button>
+      <button class="btn-ghost" id="cancelPicker">Anulează</button>
+      <button class="btn" id="savePicker">Salvează selecția</button>
     </div>
   </div>
 </div>
 
+<!-- ===========================
+     JS DIRECT ÎN ACEST FIȘIER
+     =========================== -->
 <script>
-  // --- Anul ---
-  document.getElementById('y').textContent = new Date().getFullYear();
+/* ---------- Echipa reală: 32 membri, grupați pe 8 domenii ---------- */
+const TEAM = {
+  "Software Development": [
+    {id:1, name:"Inginer software", cost:60},
+    {id:2, name:"Backend engineer", cost:65},
+    {id:3, name:"Frontend engineer", cost:55},
+    {id:4, name:"Mobile developer", cost:58}
+  ],
+  "AI & Data Science": [
+    {id:5, name:"ML Engineer", cost:70},
+    {id:6, name:"Data Scientist", cost:72},
+    {id:7, name:"Data Engineer", cost:68},
+    {id:8, name:"Applied ML", cost:75}
+  ],
+  "DevOps & Cloud": [
+    {id:9, name:"Cloud Engineer", cost:67},
+    {id:10, name:"Platform Engineer", cost:69},
+    {id:11, name:"Site Reliability", cost:70},
+    {id:12, name:"SecDevOps", cost:72}
+  ],
+  "UI/UX Design": [
+    {id:13, name:"Product Designer", cost:55},
+    {id:14, name:"UI Designer", cost:50},
+    {id:15, name:"Prototyper", cost:50},
+    {id:16, name:"Content Designer", cost:45}
+  ],
+  "Marketing & Branding": [
+    {id:17, name:"Growth Marketer", cost:50},
+    {id:18, name:"Brand Designer", cost:48},
+    {id:19, name:"Content Strategist", cost:46},
+    {id:20, name:"Social Media", cost:45}
+  ],
+  "Embedded & IoT": [
+    {id:21, name:"Embedded Engineer", cost:60},
+    {id:22, name:"IoT Engineer", cost:62},
+    {id:23, name:"Electronics", cost:61},
+    {id:24, name:"Edge AI", cost:65}
+  ],
+  "Cybersecurity": [
+    {id:25, name:"AppSec Engineer", cost:75},
+    {id:26, name:"Blue Team", cost:70},
+    {id:27, name:"Pen-Tester", cost:80},
+    {id:28, name:"GRC Specialist", cost:65}
+  ],
+  "Legal Tech": [
+    {id:29, name:"Legal Engineer", cost:60},
+    {id:30, name:"Compliance Tech", cost:58},
+    {id:31, name:"AI Paralegal", cost:65},
+    {id:32, name:"Product Owner", cost:70}
+  ]
+};
 
-  // --- FX & data ---
-  const FX = { EUR:1, USD:1.08, RON:4.95 };
+let selected = [];
 
-  // Membrii (poze-echipa/1.png … 32.png) — adaptează nume/rol/rate la nevoie
-  const PEOPLE = [
-    {id:1,  name:'I. Popescu',      role:'lead',   rate:70},
-    {id:2,  name:'M. Dobre',        role:'senior', rate:60},
-    {id:3,  name:'V. Radu',         role:'mid',    rate:45},
-    {id:4,  name:'A. Dumitrescu',   role:'devops', rate:65},
-    {id:5,  name:'L. Ionescu',      role:'qa',     rate:35},
-    {id:6,  name:'C. Marinescu',    role:'ux',     rate:45},
-    {id:7,  name:'S. Enache',       role:'pm',     rate:55},
-    {id:8,  name:'G. Petrescu',     role:'senior', rate:60},
-    {id:9,  name:'D. Pavel',        role:'mid',    rate:45},
-    {id:10, name:'A. Stan',         role:'qa',     rate:35},
-    {id:11, name:'R. Manea',        role:'devops', rate:65},
-    {id:12, name:'C. Tudor',        role:'ux',     rate:45},
-    {id:13, name:'B. Georgescu',    role:'lead',   rate:70},
-    {id:14, name:'E. Neagu',        role:'senior', rate:60},
-    {id:15, name:'M. Avram',        role:'mid',    rate:45},
-    {id:16, name:'D. Florescu',     role:'qa',     rate:35},
-    {id:17, name:'T. Oprea',        role:'data',   rate:60},
-    {id:18, name:'F. Mureșan',      role:'mobile', rate:55},
-    {id:19, name:'C. Antonescu',    role:'security', rate:60},
-    {id:20, name:'S. Pătrașcu',     role:'senior', rate:60},
-    {id:21, name:'A. Mihai',        role:'mid',    rate:45},
-    {id:22, name:'G. Pavel',        role:'devops', rate:65},
-    {id:23, name:'R. Truță',        role:'qa',     rate:35},
-    {id:24, name:'D. Drăgan',       role:'ux',     rate:45},
-    {id:25, name:'I. Farkas',       role:'pm',     rate:55},
-    {id:26, name:'M. Nistor',       role:'data',   rate:60},
-    {id:27, name:'V. Preda',        role:'mobile', rate:55},
-    {id:28, name:'A. Ilie',         role:'security', rate:60},
-    {id:29, name:'R. Cristea',      role:'senior', rate:60},
-    {id:30, name:'I. Pavel',        role:'mid',    rate:45},
-    {id:31, name:'D. Banu',         role:'qa',     rate:35},
-    {id:32, name:'L. Pop',          role:'devops', rate:65},
-  ];
+/* ---------- Helpers ---------- */
+const fx = x => "€" + x.toLocaleString("ro-RO");
 
-  const ROLE_LABELS = {
-    lead:'Tech Lead', senior:'Senior Developer', mid:'Mid Developer', qa:'QA Engineer',
-    ux:'UX/UI Designer', devops:'DevOps Engineer', pm:'Project Manager',
-    data:'Data/ML Engineer', mobile:'Mobile Developer', security:'Security Engineer'
-  };
+/* ---------- UI referințe ---------- */
+const picker = document.getElementById("picker");
+const pickerBody = document.getElementById("pickerBody");
+const selectedWrap = document.getElementById("selectedTeam");
+const kpiCostLunar = document.getElementById("kpiCostLunar");
+const kpiLuni = document.getElementById("kpiLuni");
+const kpiTotal = document.getElementById("kpiTotal");
+const costBreakdown = document.getElementById("costBreakdown");
 
-  // Config implicit pe roluri (include și roluri suplimentare)
-  const BASE_ROLES = [
-    { id:'lead',   name:ROLE_LABELS.lead,   rate:70, qty:1, hours:40, selected:[] },
-    { id:'senior', name:ROLE_LABELS.senior, rate:60, qty:2, hours:40, selected:[] },
-    { id:'mid',    name:ROLE_LABELS.mid,    rate:45, qty:1, hours:40, selected:[] },
-    { id:'qa',     name:ROLE_LABELS.qa,     rate:35, qty:1, hours:30, selected:[] },
-    { id:'ux',     name:ROLE_LABELS.ux,     rate:45, qty:0, hours:20, selected:[] },
-    { id:'devops', name:ROLE_LABELS.devops, rate:65, qty:0, hours:15, selected:[] },
-    { id:'pm',     name:ROLE_LABELS.pm,     rate:55, qty:0, hours:10, selected:[] },
-    { id:'data',   name:ROLE_LABELS.data,   rate:60, qty:0, hours:40, selected:[] },
-    { id:'mobile', name:ROLE_LABELS.mobile, rate:55, qty:0, hours:40, selected:[] },
-    { id:'security', name:ROLE_LABELS.security, rate:60, qty:0, hours:20, selected:[] },
-  ];
+/* ---------- Deschidere/închidere picker ---------- */
+document.getElementById("selectTeamBtn").addEventListener("click", () => {
+  picker.hidden = false;
+  renderPicker();
+});
+document.getElementById("closePicker").addEventListener("click", () => picker.hidden = true);
+document.getElementById("cancelPicker").addEventListener("click", () => picker.hidden = true);
 
-  const form = document.getElementById('simForm');
-  const teamBody = document.getElementById('teamBody');
-  const durationEl = document.getElementById('duration');
-  const complexityEl = document.getElementById('complexity');
-  const currencyEl = document.getElementById('currency');
-  const sumCurrEl = document.getElementById('summaryCurrency');
-  const startEl = document.getElementById('startDate');
-  const deadlineEl = document.getElementById('deadline');
+/* ---------- Generează grila de selecție ---------- */
+function renderPicker(){
+  pickerBody.innerHTML = "";
+  Object.entries(TEAM).forEach(([group, members]) => {
+    const h = document.createElement("h3");
+    h.textContent = group;
+    pickerBody.appendChild(h);
 
-  const kpiMonthly = document.getElementById('kpiMonthly');
-  const kpiTotal   = document.getElementById('kpiTotal');
-  const kpiMonths  = document.getElementById('kpiMonths');
-  const breakdown  = document.getElementById('breakdown');
+    const grid = document.createElement("div");
+    grid.className = "picker-grid";
 
-  let roles = JSON.parse(JSON.stringify(BASE_ROLES));
-
-  // ---- Render tabel echipă ----
-  function renderTeam(){
-    teamBody.innerHTML = '';
-    roles.forEach((r, idx)=>{
-      const row = document.createElement('div');
-      row.className = 'tr';
-      row.dataset.idx = idx;
-
-      const selectedCount = r.selected.length;
-      const qtyDisabled = selectedCount > 0 ? 'disabled' : '';
-
-      row.innerHTML = `
-        <div class="rol">
-          <div class="rol-title">${r.name}</div>
-          <div class="chips" id="chips-${r.id}">
-            ${r.selected.map(pid => chipHTML(personById(pid))).join('')}
-          </div>
-        </div>
-        <div><input type="number" class="rate" min="10" max="300" step="1" value="${r.rate}"></div>
-        <div><input type="number" class="qty"  min="0" max="15"  step="1" value="${selectedCount || r.qty}" ${qtyDisabled}></div>
-        <div><input type="number" class="hrs"  min="0" max="40"  step="1" value="${r.hours}"></div>
-        <div class="sel">
-          <button type="button" class="btn btn-ghost pick-btn" data-role="${r.id}">Alege</button>
-          ${selectedCount ? `<small class="muted">selectați: ${selectedCount}</small>`:``}
-        </div>
-        <div class="cost" data-val="0">€ 0</div>
+    members.forEach(m => {
+      const card = document.createElement("label");
+      card.className = "p-card" + (selected.includes(m.id) ? " on" : "");
+      card.innerHTML = `
+        <input type="checkbox" value="${m.id}" ${selected.includes(m.id) ? "checked" : ""}>
+        <strong>${m.name}</strong>
+        <small>€${m.cost}/h</small>
       `;
-      teamBody.appendChild(row);
-    });
-    // legăm butoanele de picker
-    teamBody.querySelectorAll('.pick-btn').forEach(btn=>{
-      btn.addEventListener('click', ()=> openPicker(btn.dataset.role));
-    });
-  }
-
-  function chipHTML(p){
-    return `<span class="chip"><img src="poze-echipa/${p.id}.png" alt="${p.name}"><em>${p.name}</em></span>`;
-  }
-  function personById(id){ return PEOPLE.find(x=>x.id===id); }
-
-  // ---- Picker persoane ----
-  const pickerBackdrop = document.getElementById('pickerBackdrop');
-  const pickerGrid = document.getElementById('pickerGrid');
-  const pickerRoleName = document.getElementById('pickerRoleName');
-  const pickerClose = document.getElementById('pickerClose');
-  const pickerCancel = document.getElementById('pickerCancel');
-  const pickerSave = document.getElementById('pickerSave');
-  let currentRole = null;
-  let tempSelected = new Set();
-
-  function openPicker(roleId){
-    currentRole = roleId;
-    const r = roles.find(x=>x.id===roleId);
-    pickerRoleName.textContent = r.name;
-    tempSelected = new Set(r.selected);
-
-    // populați gridul cu persoanele filtrate pe rol
-    const people = PEOPLE.filter(p=>p.role===roleId);
-    pickerGrid.innerHTML = people.map(p => `
-      <label class="p-card ${tempSelected.has(p.id)?'on':''}" data-id="${p.id}">
-        <input type="checkbox" ${tempSelected.has(p.id)?'checked':''}/>
-        <img src="poze-echipa/${p.id}.png" alt="${p.name}">
-        <strong>${p.name}</strong>
-        <span class="muted">${ROLE_LABELS[p.role]} • €${p.rate}/h</span>
-      </label>
-    `).join('') || `<p class="muted">Nu avem încă persoane pe acest rol.</p>`;
-
-    pickerGrid.querySelectorAll('.p-card').forEach(card=>{
-      card.addEventListener('click', (e)=>{
-        if(e.target.tagName!=='INPUT'){ card.querySelector('input').checked = !card.querySelector('input').checked; }
-        const id = parseInt(card.dataset.id,10);
-        if(card.querySelector('input').checked){ tempSelected.add(id); card.classList.add('on'); }
-        else{ tempSelected.delete(id); card.classList.remove('on'); }
-      });
+      grid.appendChild(card);
     });
 
-    pickerBackdrop.hidden = false;
-    document.body.style.overflow = 'hidden';
-  }
-  function closePicker(){
-    pickerBackdrop.hidden = true;
-    document.body.style.overflow = '';
-  }
-  pickerClose.addEventListener('click', closePicker);
-  pickerCancel.addEventListener('click', closePicker);
-  pickerSave.addEventListener('click', ()=>{
-    if(!currentRole) return;
-    const r = roles.find(x=>x.id===currentRole);
-    r.selected = Array.from(tempSelected);
-    // dacă avem selecții — lock qty = număr selecții
-    renderTeam();
-    compute();
-    closePicker();
+    pickerBody.appendChild(grid);
   });
+}
 
-  // ---- Calcule ----
-  const kpiMonths = document.getElementById('kpiMonths');
+/* ---------- Salvează selecția ---------- */
+document.getElementById("savePicker").addEventListener("click", () => {
+  selected = [...pickerBody.querySelectorAll(".p-card input:checked")].map(x => +x.value);
+  picker.hidden = true;
+  renderSelected();
+  updateCosts();
+});
 
-  function monthsBetween(start, end){
-    if(!start || !end) return null;
-    const s = new Date(start), e = new Date(end);
-    if (e <= s) return 1;
-    const years = e.getFullYear() - s.getFullYear();
-    const months = e.getMonth() - s.getMonth();
-    const days = e.getDate() - s.getDate();
-    let m = years*12 + months + (days>0 ? 1 : 0);
-    return Math.max(1, m);
-  }
-
-  function syncDatesDur(){
-    // dacă am ambele date => setăm durata
-    const s = startEl.value, d = deadlineEl.value;
-    const m = monthsBetween(s,d);
-    if(m){ durationEl.value = m; }
-  }
-  function syncDeadlineFromDuration(){
-    const s = startEl.value;
-    if(!s) return;
-    const m = parseInt(durationEl.value||'1',10);
-    const dt = new Date(s);
-    dt.setMonth(dt.getMonth()+m);
-    // o zi înapoi ca să nu trecem în luna următoare
-    dt.setDate(dt.getDate()-1);
-    deadlineEl.value = dt.toISOString().slice(0,10);
-  }
-
-  function compute(){
-    const months = Math.max(1, parseInt(durationEl.value||'1',10));
-    const cx = parseFloat(complexityEl.value || '1');
-
-    // uplift
-    let uplift = 0;
-    document.querySelectorAll('.extra').forEach(cb=>{
-      if (cb.checked) uplift += parseFloat(cb.dataset.uplift || '0');
-    });
-
-    const curr = sumCurrEl.value = currencyEl.value;
-    const fx = FX[curr] || 1;
-    let monthly = 0;
-    const perRoleBreak = [];
-
-    teamBody.querySelectorAll('.tr').forEach((row, i)=>{
-      const r = roles[i];
-      const rate  = r.rate  = parseFloat(row.querySelector('.rate').value || '0');
-      const hrs   = r.hours = parseInt(row.querySelector('.hrs').value || '0',10);
-      const qtyInput = row.querySelector('.qty');
-      let qty = qtyInput.disabled ? (r.selected.length||0) : parseInt(qtyInput.value||'0',10);
-      if(qty < 0) qty = 0;
-
-      const cost = rate * qty * hrs * 4 * cx;
-      monthly += cost;
-
-      // rând
-      row.querySelector('.cost').textContent = formatMoney(cost * fx, curr);
-
-      // breakdown per nume, dacă există selecții
-      if(r.selected.length){
-        r.selected.forEach(pid=>{
-          const p = personById(pid);
-          perRoleBreak.push({ name: `${r.name} — ${p.name}`, cost: rate * hrs * 4 * cx });
-        });
-      }else if(qty>0){
-        perRoleBreak.push({ name: r.name, cost });
-      }
-    });
-
-    monthly = monthly * (1 + uplift);
-
-    kpiMonths.textContent = months;
-    kpiMonthly.textContent = formatMoney(monthly * fx, curr);
-    kpiTotal.textContent   = formatMoney(monthly * months * fx, curr);
-
-    breakdown.innerHTML = perRoleBreak.length
-      ? perRoleBreak.map(x=>`<div class="br"><span>${x.name}</span><span>${formatMoney(x.cost * fx, curr)}</span></div>`).join('')
-      : '<p class="muted">Nu ai selectat încă resurse.</p>';
-  }
-
-  function formatMoney(v, curr='EUR'){
-    const sym = curr==='EUR'?'€':(curr==='USD'?'$':'lei');
-    return `${sym} ${v.toLocaleString(undefined,{maximumFractionDigits:0})}`;
-  }
-
-  // ---- Init ----
-  // setăm data de start = azi
-  const today = new Date(); startEl.value = today.toISOString().slice(0,10);
-  // deadline default = +6 luni
-  const dflt = new Date(); dflt.setMonth(dflt.getMonth()+6); dflt.setDate(dflt.getDate()-1);
-  deadlineEl.value = dflt.toISOString().slice(0,10);
-
-  renderTeam(); compute();
-
-  // ascultăm schimbări
-  form.addEventListener('input', (e)=>{
-    const c = e.target.classList;
-    if (c.contains('rate') || c.contains('qty') || c.contains('hrs') ||
-        e.target.id==='duration' || e.target.id==='complexity' ||
-        e.target.id==='currency' || c.contains('extra')) {
-      compute();
-    }
-    if(e.target.id==='startDate' || e.target.id==='deadline'){
-      syncDatesDur(); compute();
-    }
+/* ---------- Afișează chips cu oamenii aleși ---------- */
+function renderSelected(){
+  selectedWrap.innerHTML = "";
+  Object.values(TEAM).flat().filter(m => selected.includes(m.id)).forEach(m => {
+    const chip = document.createElement("span");
+    chip.className = "chip";
+    chip.innerHTML = `<em>${m.name}</em>`;
+    selectedWrap.appendChild(chip);
   });
+}
 
-  durationEl.addEventListener('change', ()=>{ syncDeadlineFromDuration(); compute(); });
-  sumCurrEl.addEventListener('change', ()=>{ currencyEl.value = sumCurrEl.value; compute(); });
+/* ---------- Calcul costuri ---------- */
+function updateCosts(){
+  if(!selected.length){
+    kpiCostLunar.textContent = "€0";
+    kpiTotal.textContent = "€0";
+    kpiLuni.textContent = "0";
+    costBreakdown.innerHTML = "";
+    return;
+  }
 
-  document.getElementById('addCustomRole').addEventListener('click', ()=>{
-    const name = (document.getElementById('crName').value || '').trim();
-    const rate = parseFloat(document.getElementById('crRate').value || '0');
-    if(!name || rate<=0) return;
-    roles.push({ id:'custom_'+Date.now(), name, rate, qty:1, hours:40, selected:[] });
-    renderTeam(); compute();
-    document.getElementById('crName').value = '';
-    document.getElementById('crRate').value = '50';
-  });
+  const start = new Date(document.getElementById("startDate").value || new Date());
+  const endRaw = document.getElementById("endDate").value;
+  const end = new Date(endRaw || start);
+  const months = Math.max(1, (end - start) / (1000*60*60*24*30) || 1);
+
+  const complexity = +document.getElementById("complexity").value;
+
+  let costLunar = Object.values(TEAM).flat()
+    .filter(m => selected.includes(m.id))
+    .reduce((s,m) => s + m.cost*160, 0); // 160h/lună
+
+  costLunar *= complexity;
+
+  let uplifts = [...document.querySelectorAll(".extraOpt:checked")].reduce((a,b) => a + +b.value, 0);
+  costLunar *= (1 + uplifts);
+
+  const total = costLunar * months;
+
+  kpiCostLunar.textContent = fx(Math.round(costLunar));
+  kpiTotal.textContent   = fx(Math.round(total));
+  kpiLuni.textContent    = Math.round(months);
+
+  renderBreakdown();
+}
+
+/* ---------- Breakdown lunar ---------- */
+function renderBreakdown(){
+  costBreakdown.innerHTML = "";
+  Object.values(TEAM).flat()
+    .filter(m => selected.includes(m.id))
+    .forEach(m => {
+      const row = document.createElement("div");
+      row.className = "br";
+      row.innerHTML = `<span>${m.name}</span><span>${fx(m.cost*160)}</span>`;
+      costBreakdown.appendChild(row);
+    });
+}
+
+/* ---------- Event listeners pentru recalcul ---------- */
+["startDate","endDate","complexity"].forEach(id => {
+  document.getElementById(id).addEventListener("change", updateCosts);
+});
+document.querySelectorAll(".extraOpt").forEach(el => {
+  el.addEventListener("change", updateCosts);
+});
+document.getElementById("currencyUI").addEventListener("change", updateCosts);
+
+/* ---------- Valori implicite utile ---------- */
+(function preset(){
+  const today = new Date();
+  const inSixMonths = new Date(today);
+  inSixMonths.setMonth(inSixMonths.getMonth()+6);
+  document.getElementById("startDate").value = today.toISOString().slice(0,10);
+  document.getElementById("endDate").value = inSixMonths.toISOString().slice(0,10);
+})();
 </script>
-
 </body>
 </html>

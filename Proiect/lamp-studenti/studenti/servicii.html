@@ -9,6 +9,28 @@
   <!-- Stil dedicat pentru pagina de Servicii -->
   <link rel="stylesheet" href="servicii.css?v=4" />
 </head>
+
+<!-- Buton „Înapoi sus” -->
+<button id="backToTop" aria-label="Înapoi sus">↑</button>
+
+<script>
+  const btn = document.getElementById('backToTop');
+
+  // afișează butonul după 300px scroll
+  window.addEventListener('scroll', () => {
+    if (document.documentElement.scrollTop > 300) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  });
+
+  // scroll lin către top
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
 <body>
 
 <!-- Header (identic cu homepage) -->
