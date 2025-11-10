@@ -1,59 +1,103 @@
-# 🌍 OutsourceX — Echipe Tech la Cheie & Staff Augmentation - Baba Cristian-Teodor 634AB
+<div align="center">
 
-OutsourceX este un site web modern dedicat firmelor care caută echipe de dezvoltare software complete sau specialiști individuali pentru proiecte tech.  
-Scopul platformei este să conecteze companiile cu echipe de experți în domenii precum:
+# 🧩 **LayerLab 3D**
+### _De la idee, la obiectul perfect._
+✨ Magazin online de produse printate 3D — designuri unice, comenzi personalizate și tehnologie de ultimă generație.  
 
-- 🌐 **Web & Mobile Development**  
-- 🤖 **AI / Machine Learning & Data Science**  
-- ⚙️ **Embedded Systems & IoT**  
-- ☁️ **DevOps & Cloud Engineering**
+![Banner LayerLab 3D](https://i.imgur.com/your_banner.png) <!-- poți adăuga aici un banner personalizat -->
 
 ---
 
-## 🧠 Descriere proiect
-
-Proiectul face parte dintr-o lucrare universitară și urmărește:
-- Crearea unei **platforme de prezentare** pentru o firmă de outsourcing IT  
-- Implementarea unui design **modern, responsive și orientat spre conversie**  
-- Adăugarea unei **baze de date** care va stoca informații despre echipă, servicii și clienți  
-- Conectarea ulterioară la un backend (PHP + MySQL în LAMP) pentru gestionarea datelor
-
-Frontend-ul este construit în **HTML**, **CSS** și **JavaScript**, iar infrastructura backend folosește un mediu **Docker LAMP** (Linux, Apache, MySQL, PHP).  
-🎨 Tema: tonuri închise, accente albastre, carduri flip 3D pentru prezentarea echipei și secțiuni animate pentru servicii.
+[🛒 Vezi produsele](#caracteristici-principale) | [💌 Comandă personalizată](#contact) | [🌐 Site oficial (în curând)](#)
 
 ---
 
-## 🚀 Structura proiectului
+</div>
 
-```bash
-📦 proiect/
- ┗ 📁 lamp-studenti/
-     ┣ 📜 docker-compose.yml
-     ┗ 📁 studenti/
-         ┣ 📜 index.html
-         ┣ 📜 index.php
-         ┣ 📜 echipa.html
-         ┣ 📜 proiecte.php
-         ┗ 📜 style.css
-```
+## 🧠 Despre LayerLab 3D
 
-📘 Explicație rapidă:
+**LayerLab 3D** este mai mult decât un magazin — este un laborator creativ unde **tehnologia, arta și pasiunea pentru design** se unesc pentru a aduce ideile la viață.  
+Folosind printare 3D de precizie și materiale premium, oferim produse unice, durabile și perfect finisate, gata să transforme orice spațiu într-un loc memorabil.
 
-docker-compose.yml — definește serviciile LAMP (Apache, MySQL, PHP)
+Fiecare strat imprimat spune o poveste — de la obiecte decorative și figurine de colecție, la piese funcționale și modele personalizate realizate la cerere.
 
-index.php — pagina principală cu logică PHP
+> _„Fiecare strat contează. Pentru că din detalii se naște perfecțiunea.”_
 
-index.html — landing page-ul frontend
+---
 
-echipa.html — secțiunea dedicată echipei OutsourceX
+## ⚡ Caracteristici principale
 
-proiecte.php — listă de proiecte și module dinamice
+✅ **Experiență modernă de cumpărături** — navigare ușoară, coș intuitiv și interfață fluentă  
+✅ **Sistem complet de cont utilizator** — înregistrare, login și gestionare profil  
+✅ **Confirmare automată prin email** — după plasarea comenzii  
+✅ **Galerie reală** — toate produsele sunt fotografiate profesional  
+✅ **Design responsive** — site-ul se adaptează perfect pe orice dispozitiv  
+✅ **Formular interactiv de contact** — pentru cereri personalizate sau colaborări  
+✅ **Interfață minimalistă** — cu accente moderne și animații subtile  
 
-style.css — fișierul de stiluri pentru tot site-ul
+---
 
-✨ Autor
-Baba Cristian-Teodor 
-📚 Universitatea Politehnica din București – Facultatea de Robotică
-💡 Proiect: „OutsourceX — Platformă de Outsourcing și Staff Augmentation”
+## 💡 Viziunea LayerLab 3D
 
-🔹 „Build smarter, outsource better.” — motto-ul OutsourceX
+Ne dorim să redefinim modul în care oamenii percep obiectele din jurul lor.  
+**LayerLab 3D** transformă printarea 3D dintr-o tehnologie complexă într-o experiență accesibilă, creativă și inspirațională.  
+
+Scopul nostru este să construim o punte între **idee și realitate**, între **imaginație și obiectul final** — totul prin precizie, pasiune și inovație.
+
+---
+
+## 🧰 Tehnologii utilizate
+
+<div align="center">
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7E018?style=for-the-badge&logo=javascript&logoColor=black)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-00618A?style=for-the-badge&logo=mysql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Apache](https://img.shields.io/badge/Apache-D22128?style=for-the-badge&logo=apache&logoColor=white)
+
+</div>
+
+---
+
+## 🚀 Obiective viitoare
+
+🌐 Integrarea unui sistem real de plăți online  
+🧑‍💻 Panou Admin pentru gestionarea produselor și comenzilor  
+🔍 Filtrare avansată și căutare dinamică  
+🤖 Generator AI de modele 3D personalizate  
+📦 Parteneriate cu studiouri de design și producători locali  
+
+---
+
+## 🌈 Experiența utilizatorului
+
+Designul este gândit pentru a inspira — minimalist, curat și intuitiv.  
+Elementele vizuale, animațiile fluide și contrastul plăcut între tonurile neutre și accentele colorate creează o experiență plăcută, echilibrată și elegantă.  
+
+Totul este construit cu grijă pentru ca **utilizatorul să se simtă parte din procesul de creație.**
+
+---
+
+## 🧑‍🎨 Despre autor
+
+👋 **Baba Cristian-Teodor**  
+🎓 Student la *Universitatea Politehnică din București* — Facultatea de Inginerie Industrială și Robotică  
+💡 Pasionat de printare 3D, robotică, design și dezvoltare software  
+📧 Contact: [layerlab@layerlab.ro](mailto:layerlab@layerlab.ro)  
+
+---
+
+<div align="center">
+
+### 💬 „Printarea 3D nu înseamnă doar obiecte. Înseamnă posibilități infinite.”
+
+#### 🌐 **LayerLab 3D — acolo unde ideile prind viață, strat cu strat.**
+
+---
+
+[⬆️ Înapoi sus](#-layerlab-3d) | [🛒 Explorează produsele](#) | [💌 Trimite o comandă personalizată](#)
+
+</div>
