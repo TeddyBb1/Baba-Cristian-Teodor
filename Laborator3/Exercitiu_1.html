@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercitiul 1</title>
+</head>
+<body>
+  <h1>Rezultatele se vad in consola (F12)</h1>
+
+  <script>
+    let myName = "Teodor";
+    let mySurname = "Baba";
+    let myAge = 22;
+    let studyYear = 3;
+    let myHobby = "padel";
+
+    myAge += 3;
+
+    let textConcatenare = "Bună! Mă numesc " + myName + " " + mySurname +
+      ", am " + myAge + " ani și sunt student la Universitatea Politehnica din București, anul " +
+      studyYear + ". Unul dintre hobby-urile mele este " + myHobby + ".";
+
+    console.log(textConcatenare);
+
+    let textPlaceholder = `Bună! Mă numesc ${myName} ${mySurname}, am ${myAge} ani 
+și sunt student la Universitatea Politehnica din București, anul ${studyYear}.
+Unul dintre hobby-urile mele este ${myHobby}.`;
+
+    console.log(textPlaceholder);
+
+    console.log(typeof myName);
+    console.log(typeof myAge);
+    console.log(typeof myHobby);
+  </script>
+</body>
+</html>

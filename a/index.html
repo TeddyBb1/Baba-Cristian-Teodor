@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OutsourceX — Echipe Tech la Cheie & Staff Augmentation</title>
+  <meta name="description" content="Firmă de outsourcing & staff augmentation: echipe senior pentru web, mobile, AI/ML, embedded, DevOps. Timp de ramp-up sub 2 săptămâni." />
+  <style>
+    :root{
+      --bg:#0f1218; --card:#171b23; --muted:#8b95a7; --text:#e9eef7;
+      --brand:#4c7dff; --brand-2:#65e0c0; --accent:#ffd166; --ok:#36d399; --warn:#f59e0b;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    a{color:var(--brand);text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo .mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    nav a{margin:0 10px;color:var(--text);opacity:.9}
+    nav a:hover{opacity:1}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;background:var(--brand);color:white;font-weight:600;box-shadow:var(--shadow);border:0;cursor:pointer}
+    .btn.outline{background:transparent;border:1px solid #2a3242}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:40px 0}
+    .hero h1{font-size:40px;line-height:1.15;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 20px}
+    .hero .badge{display:inline-flex;gap:8px;align-items:center;background:#101522;border:1px solid #202535;color:#c3d2ff;border-radius:999px;padding:8px 12px;margin-bottom:14px}
+    .card{background:var(--card);border:1px solid #232a38;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero .visual{height:340px;border-radius:var(--radius);background:
+      radial-gradient(1200px 400px at -20% 10%, rgba(76,125,255,.06), transparent),
+      radial-gradient(800px 300px at 120% 80%, rgba(101,224,192,.06), transparent),
+      #121722;border:1px solid #232a38;display:flex;align-items:center;justify-content:center}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-4{grid-template-columns:repeat(4,1fr)}
+    .section{padding:36px 0}
+    .section h2{font-size:28px;margin:0 0 8px}
+    .sub{color:var(--muted);margin:0 0 18px}
+    .service{padding:18px}
+    .service h3{margin:0 0 8px}
+    .kpi{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+    .kpi span{background:#121722;border:1px solid #232a38;border-radius:10px;padding:8px 10px;color:#c9d2e3}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#101522;border:1px solid #232a38;color:#aebbd4;font-size:13px}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .step{padding:16px}
+    .step .n{font-weight:700;color:var(--brand)}
+    .cases .case{padding:18px}
+    .case small{color:var(--muted)}
+    .stack{display:flex;gap:10px;flex-wrap:wrap}
+    .stack .tag{padding:8px 10px;border-radius:10px;border:1px solid #2a3242;background:#101522}
+    form{display:grid;gap:12px}
+    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #2a3242;background:#0e1420;color:var(--text)}
+    .footer{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px;padding:28px 0;border-top:1px solid #232a38;color:#aebbd4}
+    .footer a{color:#cfd7e7;opacity:.9}
+    .cookie{position:fixed;inset:auto 16px 16px 16px;z-index:10;max-width:760px;padding:14px 16px;border-radius:14px;background:#0e1420;border:1px solid #2a3242;display:flex;gap:12px;align-items:center}
+    .cookie .btn{padding:10px 14px}
+    @media (max-width:960px){
+      .hero{grid-template-columns:1fr}
+      .process{grid-template-columns:1fr 1fr}
+      .grid.cols-3,.grid.cols-4{grid-template-columns:1fr 1fr}
+      .footer{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .grid.cols-3,.grid.cols-4,.process{grid-template-columns:1fr}
+      .hero h1{font-size:32px}
+      .cookie{inset:auto 8px 8px 8px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="mark" aria-hidden="true"></div>
+        <strong>OutsourceX</strong>
+      </div>
+      <nav>
+        <a href="#servicii">Servicii</a>
+        <a href="#industrii">Industrii</a>
+        <a href="#proces">Proces</a>
+        <a href="#cazuri">Studii de caz</a>
+        <a href="echipa.html">Echipa</a>
+        <a href="#contact" class="btn outline">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="badge">⏱️ Ramp-up sub 2 săptămâni • ⛑️ SLA enterprise • 🇪🇺 GDPR</span>
+        <h1>Echipe senior, livrare rapidă. Outsourcing & Staff Augmentation care chiar livrează.</h1>
+        <p>Completăm echipele tale cu dezvoltatori validați tehnic (web, mobile, AI/ML, embedded, DevOps) sau livrăm proiecte la cheie. Flexibil, transparent, fără blocaje.</p>
+        <div style="display:flex;gap:10px;margin-top:10px">
+          <a href="#contact" class="btn">Solicită ofertă</a>
+          <a href="#servicii" class="btn outline">Vezi servicii</a>
+        </div>
+        <div class="kpi">
+          <span>⭐ 4.9 CSAT</span>
+          <span>🔒 ISO27001-ready</span>
+          <span>🧠 Tech lead inclus</span>
+          <span>💬 Daily standup & demo bilunar</span>
+        </div>
+      </div>
+      <div class="visual card">
+        <div>
+          <div class="pill">Staff Augmentation</div>
+          <div class="pill" style="margin-left:8px">Proiect la cheie</div>
+          <div class="pill" style="margin-left:8px">Team Extension</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicii">
+      <h2>Servicii</h2>
+      <p class="sub">Alegem modelul potrivit pentru stadiul tău: resurse dedicate, echipă mixtă sau livrare end-to-end.</p>
+      <div class="grid cols-3">
+        <div class="service card">
+          <h3>Staff Augmentation</h3>
+          <p>Dezvoltatori integrați în echipa ta (full-time/part-time). Contract flexibil, ramp-up rapid.</p>
+          <ul>
+            <li>Screening tehnic & cultural</li>
+            <li>Overlapping orar UE/US</li>
+            <li>Facturare lunară, fără cost ascuns</li>
+          </ul>
+        </div>
+        <div class="service card">
+          <h3>Proiecte la cheie</h3>
+          <p>Analiză, arhitectură, implementare, QA, DevOps, livrare și suport.</p>
+          <ul>
+            <li>Discovery & SOW clar</li>
+            <li>Milestones + demo bilunar</li>
+            <li>SLA & garanție post-launch</li>
+          </ul>
+        </div>
+        <div class="service card">
+          <h3>Consultanță & Audit</h3>
+          <p>Revizuire arhitectură, optimizare costuri cloud, performanță, securitate.</p>
+          <ul>
+            <li>Cloud & Kubernetes</li>
+            <li>Observability & SRE</li>
+            <li>Security hardening (OWASP)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="industrii">
+      <h2>Industrii & competențe</h2>
+      <p class="sub">Fintech, e-commerce, producție, mobilitate, AI/ML, IoT & embedded.</p>
+      <div class="stack">
+        <span class="tag">React / Vue</span>
+        <span class="tag">Node / Python / Go</span>
+        <span class="tag">AI/ML & Computer Vision</span>
+        <span class="tag">DevOps & Cloud</span>
+        <span class="tag">Embedded & Edge</span>
+        <span class="tag">QA Automation</span>
+      </div>
+    </section>
+
+    <section class="section" id="proces">
+      <h2>Proces</h2>
+      <p class="sub">Predictibil, transparent, documentat.</p>
+      <div class="process">
+        <div class="step card"><div class="n">1</div><strong>Discovery</strong><br/>Scope, riscuri, estimări, plan.</div>
+        <div class="step card"><div class="n">2</div><strong>Kickoff</strong><br/>Arhitectură, backlog, KPI.</div>
+        <div class="step card"><div class="n">3</div><strong>Build</strong><br/>Sprints, code reviews, QA.</div>
+        <div class="step card"><div class="n">4</div><strong>Launch & SLA</strong><br/>Observability, suport.</div>
+      </div>
+    </section>
+
+    <section class="section cases" id="cazuri">
+      <h2>Studii de caz</h2>
+      <p class="sub">Câteva rezultate recente (placeholder – le înlocuim cu ale tale):</p>
+      <div class="grid cols-3">
+        <div class="case card">
+          <h3>Fintech KYC</h3>
+          <p>Reducere timp verificare cu 38% prin automatizare CV + OCR.</p>
+          <small>Stack: Python, FastAPI, React, Kub.</small>
+        </div>
+        <div class="case card">
+          <h3>e-Commerce</h3>
+          <p>+21% conversii după replatforming headless & perf tuning.</p>
+          <small>Stack: Next.js, Node, Redis.</small>
+        </div>
+        <div class="case card">
+          <h3>IoT Predictive</h3>
+          <p>Downtime redus cu 30% folosind modele de predicție pe senzori.</p>
+          <small>Stack: Go, Timeseries DB, Edge.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Hai să lucrăm împreună</h2>
+      <p class="sub">Spune-ne pe scurt ce ai nevoie. Răspundem în 24h lucrătoare.</p>
+      <div class="card" style="padding:18px">
+        <form onsubmit="event.preventDefault(); alert('Mulțumim! Te contactăm în curând.');">
+          <div class="grid cols-3">
+            <div><label>Nume<br/><input required placeholder="Nume Prenume"></label></div>
+            <div><label>Email<br/><input type="email" required placeholder="you@company.com"></label></div>
+            <div><label>Companie<br/><input placeholder="Compania"></label></div>
+          </div>
+          <label>Mesaj<br/><textarea rows="5" placeholder="Descrie pe scurt proiectul sau rolurile necesare"></textarea></label>
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="btn" type="submit">Trimite</button>
+            <span class="muted" style="color:var(--muted);font-size:14px">Prin trimitere ești de acord cu <a href="#">Politica de confidențialitate</a>.</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card" style="padding:16px;display:flex;gap:14px;align-items:center">
+        <div>📄 <strong>Documente</strong>: DPA (procesator date), Termeni & Condiții, Politica de confidențialitate, Politica cookies.</div>
+        <a class="btn outline" href="#contact">Solicită DPA</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <strong>OutsourceX</strong><br/>
+        Echipe tech la cheie & staff augmentation.<br/>
+        <small>© <span id="year"></span> Toate drepturile rezervate.</small>
+      </div>
+      <div>
+        <strong>Companie</strong><br/>
+        <a href="#servicii">Servicii</a><br/>
+        <a href="#cazuri">Studii de caz</a><br/>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <strong>Legal</strong><br/>
+        <a href="#">Termeni</a><br/>
+        <a href="#">Confidențialitate</a><br/>
+        <a href="#">Cookies</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Cookie banner minimalist -->
+  <div class="cookie" id="cookie">
+    <div style="flex:1">Folosim cookie-uri pentru funcționare și analytics. <a href="#">Află mai mult</a>.</div>
+    <button class="btn outline" onclick="dismissCookie()">Respinge</button>
+    <button class="btn" onclick="acceptCookie()">Accept</button>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function dismissCookie(){ document.getElementById('cookie').style.display='none'; localStorage.setItem('cookie','no'); }
+    function acceptCookie(){ document.getElementById('cookie').style.display='none'; localStorage.setItem('cookie','yes'); }
+    if(localStorage.getItem('cookie')) document.getElementById('cookie').style.display='none';
+  </script>
+</body>
+</html>

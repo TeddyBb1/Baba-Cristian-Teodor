@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista mea de activități</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="app-header">
+            <h1>Lista mea de activități</h1>
+            <p>Adaugă ce ai de făcut astăzi și urmărește-ți progresul într-un timeline zilnic.</p>
+        </header>
+
+        <section class="app-content">
+            <aside class="side-panel">
+                <div class="badge-zi">
+                    <span class="badge-label">Astăzi</span>
+                    <span id="dataCurenta"></span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Activități înregistrate</span>
+                    <span id="counterActivitati" class="stat-value">0</span>
+                </div>
+                <p class="hint-text">
+                    Poți adăuga activități rapide, apoi le poți șterge când nu mai sunt relevante.
+                    Folosește tasta Enter pentru a adăuga mai repede.
+                </p>
+            </aside>
+
+            <main class="main-panel">
+                <div class="input-row">
+                    <input
+                        type="text"
+                        id="inputActivitate"
+                        placeholder="Ex: Luni curs la ora 10, învăț JS, mers la sală..."
+                    >
+                    <button id="btnAdauga">Adaugă activitate</button>
+                </div>
+
+                <ul id="listaActivitati" class="lista-activitati"></ul>
+            </main>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

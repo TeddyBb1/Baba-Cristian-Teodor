@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.produs {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.poza-produs {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.descriere {
+    margin: 10px 0;
+}
+
+#btnDetalii {
+    margin: 10px 0;
+    padding: 6px 12px;
+}
+
+.cutie-detalii {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    text-align: left; 
+}
+
+.cutie-detalii ul {
+    padding-left: 20px;
+}
+
+.data {
+    margin-top: 10px;
+    font-size: 14px;
+}
