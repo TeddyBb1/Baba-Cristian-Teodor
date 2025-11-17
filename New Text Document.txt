@@ -1,3 +1,0 @@
-git  switch --orphan new_branch_name
-git commit --allow-empty -m "Initial commit on orphan branch"
-git push -u origin new_branch_name
